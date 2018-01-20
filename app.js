@@ -31,3 +31,24 @@ $(document).ready(function() {
         $(".today").hide();
     });
 });
+$(document).ready(function() {
+    $(".addtask-label-inbox").click(function() {
+        $(".inbox-input").show();
+        $(".today-input").hide();
+        $(".sevendays-input").hide();
+    });
+});
+$(document).ready(function() {
+    $(".addtask-label-today").click(function() {
+        $(".today-input").show();
+        $(".inbox-input").hide();
+        $(".sevendays-input").hide();
+    });
+});
+$(document).ready(function() {
+    $(".addtask-label-sevendays").click(function() {
+        $(".sevendays-input").show();
+        $(".today-input").hide();
+        $(".inbox-input").hide();
+    });
+});

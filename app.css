@@ -121,6 +121,40 @@
     margin-right: 5%;
 }
 
+.addtask-label-inbox {
+    display: grid;
+    grid-template-columns: 1fr 30fr;
+}
+
+.addtask-label-today {
+    display: grid;
+    grid-template-columns: 1fr 30fr;
+}
+
+.addtask-label-sevendays {
+    display: grid;
+    grid-template-columns: 1fr 30fr;
+}
+
+.addtask-text-inbox {
+    margin-bottom: 4%;
+}
+
+.inbox-input {
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+}
+
+.today-input {
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+}
+
+.sevendays-input {
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+}
+
 .calendar-item1 {
     text-align: center;
     margin-right: 5%;
