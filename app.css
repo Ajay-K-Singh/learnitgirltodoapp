@@ -1,0 +1,229 @@
+.logo {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.navigation-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    text-align: -webkit-center;
+    z-index: 1;
+}
+
+.todos {
+    text-align: -webkit-center;
+}
+
+.tasks {
+    position: relative;
+    top: 30%;
+    height: 32px;
+    width: 32px;
+}
+
+.quickadd {
+    position: relative;
+    top: 30%;
+    height: 32px;
+    width: 32px;
+}
+
+.notificationbell {
+    position: relative;
+    top: 30%;
+    height: 32px;
+    width: 32px;
+}
+
+.search-box {}
+
+.container-1 {
+    width: 400px;
+    vertical-align: middle;
+    white-space: nowrap;
+    position: relative;
+    top: 28%;
+}
+
+.container-1 input#search {
+    width: 400px;
+    height: 50px;
+    background: #fdfeff;
+    border: none;
+    font-size: 15pt;
+    float: left;
+    color: #111314;
+    padding-left: 45px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-transition: background .55s ease;
+    -moz-transition: background .55s ease;
+    -ms-transition: background .55s ease;
+    -o-transition: background .55s ease;
+    transition: background .55s ease;
+}
+
+.container-1 input#search::-webkit-input-placeholder {
+    color: #65737e;
+}
+
+.container-1 input#search:-moz-placeholder {
+    /* Firefox 18- */
+    color: #65737e;
+}
+
+.container-1 input#search::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #65737e;
+}
+
+.container-1 input#search:-ms-input-placeholder {
+    color: #65737e;
+}
+
+.container-1 .icon {
+    position: absolute;
+    top: 50%;
+    margin-left: 17px;
+    margin-top: 14px;
+    z-index: 1;
+    color: #4f5b66;
+}
+
+.container-1 input#search:hover,
+.container-1 input#search:focus,
+.container-1 input#search:active {
+    outline: none;
+    border: 1px solid black
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    height: 600px;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 4fr 1fr 7fr;
+    height: 600px;
+}
+
+.menu-items {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.inbox-item {
+    text-align: center;
+    margin-right: 5%;
+}
+
+.calendar-item1 {
+    text-align: center;
+    margin-right: 5%;
+}
+
+.calendar-item2 {
+    text-align: center;
+    margin-left: 40px;
+    margin-right: 5%;
+}
+
+.project-filter {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.project-filters {
+    margin-top: 7%;
+}
+
+.project {
+    grid-column-start: 2;
+    margin-left: 1%;
+}
+
+.project-filter {
+    list-style: none;
+}
+
+.horizontal-line {
+    position: relative;
+    width: 220px;
+    margin-right: 70px;
+}
+
+.vertical-line {
+    position: relative;
+    margin-left: 0;
+}
+
+.projects {
+    position: relative;
+    top: 5%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.projects-list {
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    grid-gap: 10px;
+    grid-column-start: 2;
+    margin-left: 22%;
+}
+
+.project-labels {
+    margin-left: 5%;
+}
+
+.filters {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    top: 5%;
+}
+
+.filter-list {
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    grid-gap: 10px;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    margin-left: 31%
+}
+
+.filter-labels {
+    margin-left: 5%;
+}
+
+.menu-list {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    height: 250px;
+}
+
+
+/* .tasks {
+    position: absolute;
+    top: 3%;
+    left: 5%;
+    height: 32px;
+    width: 32px;
+}
+
+.quickadd {
+    position: absolute;
+    top: 3%;
+}
+
+.todos {
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    left: 38%;
+    z-index: 1;
+} *;

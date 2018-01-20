@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Todo App">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Ajay Kumar Singh and Harshitha">
+    <meta http-equiv="refresh" content="30">
+    <link rel="stylesheet" href="app.css">
+    <script src="jquery-3.2.1.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
+</head>
+
+<body>
+    <div class="logo">
+        <div class="navigation-items">
+            <div class="tasks">
+                <i class="fa fa-tasks fa-2x" aria-hidden="true"></i>
+            </div>
+            <div class="quickadd">
+                <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+            </div>
+            <div class="notificationbell">
+                <i class="fa fa-bell fa-2x" aria-hidden="true"></i>
+            </div>
+        </div>
+        <div class="todos">
+            <img src="public/todos3.png" class="logo">
+        </div>
+        <div class="search-box">
+            <div class="container-1">
+                <span class="icon"><i class="fa fa-search"></i></span>
+                <input type="search" id="search" placeholder="Search Tasks" />
+            </div>
+        </div>
+
+    </div>
+    <div class="grid">
+        <div class="content">
+            <div class="menu-items">
+                <div class="menu-list">
+                    <div class="inbox-button">
+                        <div class="inbox-item">
+                            <i class="fa fa-inbox fa-2x" aria-hidden="true"></i>
+                            <span>Inbox</span>
+                        </div>
+                    </div>
+                    <div class="calendar">
+                        <div class="calendar-item1">
+                            <i class="fa fa-calendar fa-2x" aria-hidden="true"></i>
+                            <span>Today</span>
+                        </div>
+                    </div>
+                    <div class="calendar-item2">
+                        <i class="fa fa-calendar fa-2x" aria-hidden="true"></i>
+                        <span>Next 7 days</span>
+                    </div>
+                </div>
+                <div class="project-filters">
+                    <ul class="project-filter">
+                        <li class="project">Projects</li>
+                        <li class="filter">Fiters</li>
+                    </ul>
+                    <hr class="horizontal-line">
+                    <div class="projects">
+                        <div class="projects-list">
+                            <div "project-1">
+                                <div class="label1">
+                                    <i class="fa fa-circle" style="color:green;" aria-hidden="true"></i>
+                                    <span class="project-labels">Personal</span>
+                                </div>
+                            </div>
+                            <div "project-2">
+                                <div class="label1">
+                                    <i class="fa fa-circle" style="color:blue;" aria-hidden="true"></i>
+                                    <span class="project-labels">Shopping</span>
+                                </div>
+                            </div>
+                            <div "project-3">
+                                <div class="label3">
+                                    <i class="fa fa-circle" style="color:rgb(139, 64, 64);" aria-hidden="true"></i>
+                                    <span class="project-labels">Work</span>
+                                </div>
+                            </div>
+                            <div "project-3">
+                                <div class="label3">
+                                    <i class="fa fa-circle" style="color:rgb(65, 8, 8);" aria-hidden="true"></i>
+                                    <span class="project-labels">Work</span>
+                                </div>
+                            </div>
+                            <div "project-3">
+                                <div class="label3">
+                                    <i class="fa fa-circle" style="color:rgb(27, 58, 12);" aria-hidden="true"></i>
+                                    <span class="project-labels">Work</span>
+                                </div>
+                            </div>
+                            <div "project-3">
+                                <div class="label3">
+                                    <i class="fa fa-plus " style="color:rgb(138, 29, 123);" aria-hidden="true"></i>
+                                    <span class="project-labels">Add Project</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="filters" style="display:none">
+                        <div class="filter-list">
+                            <div "filter-1">
+                                <div class="label1">
+                                    <i class="fa fa-filter" style="color:green;" aria-hidden="true"></i>
+                                    <span class="filter-labels">Assigned to me</span>
+                                </div>
+                            </div>
+                            <div "filter-2">
+                                <div class="label1">
+                                    <i class="fa fa-filter" style="color:rgb(184, 142, 28);" aria-hidden="true"></i>
+                                    <span class="filter-labels">Assigned to others</span>
+                                </div>
+                            </div>
+                            <div "filter-3">
+                                <div class="label3">
+                                    <i class="fa fa-filter" style="color:rgb(212, 108, 22);" aria-hidden="true"></i>
+                                    <span class="filter-labels">Priority 1</span>
+                                </div>
+                            </div>
+                            <div "filter-3">
+                                <div class="label3">
+                                    <i class="fa fa-filter" style="color:rgb(158, 13, 13);" aria-hidden="true"></i>
+                                    <span class="filter-labels">Priority 2</span>
+                                </div>
+                            </div>
+                            <div "filter-3">
+                                <div class="label3">
+                                    <i class="fa fa-filter" style="color:rgb(21, 30, 68);" aria-hidden="true"></i>
+                                    <span class="filter-labels">Work</span>
+                                </div>
+                            </div>
+                            <div "filter-3">
+                                <div class="label3">
+                                    <i class="fa fa-plus " style="color:rgb(138, 29, 123);" aria-hidden="true"></i>
+                                    <span class="filter-labels">Priority 3</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <hr class="vertical-line" width="1" size="540">
+            </div>
+            <div class="navigation-divisions">
+                <div class="inbox" style="display: none;">
+                    <h2>Inbox</h2>
+                </div>
+                <div class="today" style="display: none;">
+                    <h2>Today</h2>
+                </div>
+                <div class="plus-seven-days" style="display: none;">
+                    <h2>Next 7 days</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+</body>
+
+</html
