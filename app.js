@@ -99,11 +99,12 @@ const createNewTaskElement = function(taskString, dateOfTask) {
 }
 const addTask = function() {
     let taskInput = document.getElementById("inputTask");
-    let dateInput = document.getElementById("schedule-inbox").value;
-    let listItem = createNewTaskElement(taskInput.value, dateInput);
+    let dateInput = document.getElementById("schedule-inbox");
+    let listItem = createNewTaskElement(taskInput.value, dateInput.value);
     let incompleteTasks = document.getElementById('incomplete-task-list');
     incompleteTasks.appendChild(listItem);
     taskInput.value = "";
+    dateInput.value = "";
 }
 const addTaskToday = function() {
     let taskInput = document.getElementById("inputTaskToday");
@@ -112,6 +113,7 @@ const addTaskToday = function() {
     let incompleteTasks = document.getElementById('today-task-list');
     incompleteTasks.appendChild(listItem);
     taskInput.value = "";
+    dateInput.value = "";
 }
 const addTaskSevenDays = function() {
     let taskInput = document.getElementById("sevendaysInput");
@@ -120,6 +122,7 @@ const addTaskSevenDays = function() {
     let incompleteTasks = document.getElementById('sevendays-task-list');
     incompleteTasks.appendChild(listItem);
     taskInput.value = "";
+    dateInput.value = "";
 }
 
 // function onCancel() {

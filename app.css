@@ -256,24 +256,6 @@
     color: #65737e;
 }
 
-.container-2 input#schedule::-webkit-input-placeholder {
-    color: #65737e;
-}
-
-.container-2 input#schedule:-moz-placeholder {
-    /* Firefox 18- */
-    color: #65737e;
-}
-
-.container-2 input#schedule::-moz-placeholder {
-    /* Firefox 19+ */
-    color: #65737e;
-}
-
-.container-2 input#schedule:-ms-input-placeholder {
-    color: #65737e;
-}
-
 .container-1 .icon {
     position: absolute;
     top: 50%;
@@ -311,9 +293,9 @@
     outline: rgb(151, 93, 93);
 }
 
-.container-2 input#schedule:hover,
-.container-2 input#schedule:focus,
-.container-2 input#schedule:active {
+.container-2 input#sevendaysInput:hover,
+.container-2 input#sevendaysInput:focus,
+.container-2 input#sevendaysInput:active {
     outline: rgb(151, 93, 93);
 }
 
