@@ -154,6 +154,15 @@ const addTask = function() {
     incompleteTasks.appendChild(listItem);
     saveTask(isCompleted, taskInput.value, dateInput.value);
 }
+const addTaskTodos = function() {
+    let taskInput = document.getElementById("inputTaskTodos");
+    let dateInput = document.getElementById("schedule-todos");
+    let isCompleted = false;
+    let listItem = createNewTaskElement(isCompleted, taskInput.value, dateInput.value);
+    let incompleteTasks = document.getElementById('incomplete-task-list');
+    incompleteTasks.appendChild(listItem);
+    saveTask(isCompleted, taskInput.value, dateInput.value);
+}
 const addTaskToday = function() {
     let taskInput = document.getElementById("inputTaskToday");
     let dateInput = document.getElementById("schedule-today");
