@@ -1,3 +1,18 @@
+var config = {
+    apiKey: "AIzaSyB6OpeVYIvYQD8ryWmfZeswasxshLUZKwE",
+    authDomain: "todo-listjs.firebaseapp.com",
+    databaseURL: "https://todo-listjs.firebaseio.com",
+    projectId: "todo-listjs",
+    storageBucket: "todo-listjs.appspot.com",
+    messagingSenderId: "275339973726"
+};
+firebase.initializeApp(config);
+
+//Todos ref
+
+const todosRef = firebase.database().ref('todos');
+
+
 $(document).ready(function() {
     $(".filter").click(function() {
         $(".filters").show();
@@ -103,6 +118,7 @@ const addTask = function() {
     let listItem = createNewTaskElement(taskInput.value, dateInput.value);
     let incompleteTasks = document.getElementById('incomplete-task-list');
     incompleteTasks.appendChild(listItem);
+    saveTask(taskInput.value, dateInput.value);
     taskInput.value = "";
     dateInput.value = "";
 }
@@ -125,6 +141,14 @@ const addTaskSevenDays = function() {
     dateInput.value = "";
 }
 
+
+function saveTask(task, dateToBeCompleted) {
+    const newTodoRef = todosRef.push();
+    newTodoRef.set({
+        task,
+        dateToBeCompleted
+    })
+}
 // function onCancel() {
 //     let taskInput = document.getElementById("inputTask");
 //     taskInput.value = "";
