@@ -130,7 +130,43 @@
     transition: background .55s ease;
 }
 
-.container-2 input#schedule {
+.container-2 input#schedule-today {
+    height: 50px;
+    background: #fdfeff;
+    border: 1px solid black;
+    font-size: 15pt;
+    float: left;
+    color: #111314;
+    padding-left: 10px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-transition: background .55s ease;
+    -moz-transition: background .55s ease;
+    -ms-transition: background .55s ease;
+    -o-transition: background .55s ease;
+    transition: background .55s ease;
+}
+
+.container-2 input#schedule-sevendays {
+    height: 50px;
+    background: #fdfeff;
+    border: 1px solid black;
+    font-size: 15pt;
+    float: left;
+    color: #111314;
+    padding-left: 10px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-transition: background .55s ease;
+    -moz-transition: background .55s ease;
+    -ms-transition: background .55s ease;
+    -o-transition: background .55s ease;
+    transition: background .55s ease;
+}
+
+.container-2 input#schedule-inbox {
     height: 50px;
     background: #fdfeff;
     border: 1px solid black;
@@ -327,9 +363,14 @@
     width: 35px;
 }
 
+.date-string {
+    font-size: 15px;
+    margin-top: 3%;
+}
+
 .list-item {
     display: grid;
-    grid-template-columns: 1fr 50fr;
+    grid-template-columns: 1fr 50fr 40fr;
     font-size: 25px;
     margin-left: -3%;
 }

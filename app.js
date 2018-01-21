@@ -60,7 +60,7 @@ $(document).ready(function() {
 
 const taskInput = document.getElementById("inputTask");
 const incompleteTasks = document.getElementsByClassName('incomplete-task-list');
-const createNewTaskElement = function(taskString) {
+const createNewTaskElement = function(taskString, dateOfTask) {
 
     var listItem = document.createElement("li");
     listItem.className = "list-item";
@@ -68,28 +68,35 @@ const createNewTaskElement = function(taskString) {
     checkBox.type = "checkbox";
     checkBox.className = "input-checkbox";
     var label = document.createElement("label");
+    var labelDate = document.createElement("label");
+    labelDate.className = "date-string";
+    labelDate.innerText = dateOfTask;
     label.innerText = taskString;
     listItem.appendChild(checkBox);
     listItem.appendChild(label);
+    listItem.appendChild(labelDate)
     return listItem;
 }
 const addTask = function() {
     let taskInput = document.getElementById("inputTask");
-    let listItem = createNewTaskElement(taskInput.value);
+    let dateInput = document.getElementById("schedule-inbox").value;
+    let listItem = createNewTaskElement(taskInput.value, dateInput);
     let incompleteTasks = document.getElementById('incomplete-task-list');
     incompleteTasks.appendChild(listItem);
     taskInput.value = "";
 }
 const addTaskToday = function() {
     let taskInput = document.getElementById("inputTaskToday");
-    let listItem = createNewTaskElement(taskInput.value);
+    let dateInput = document.getElementById("schedule-today").value;
+    let listItem = createNewTaskElement(taskInput.value, dateInput.value);
     let incompleteTasks = document.getElementById('today-task-list');
     incompleteTasks.appendChild(listItem);
     taskInput.value = "";
 }
 const addTaskSevenDays = function() {
     let taskInput = document.getElementById("sevendaysInput");
-    let listItem = createNewTaskElement(taskInput.value);
+    let dateInput = document.getElementById("schedule-sevendays").value;
+    let listItem = createNewTaskElement(taskInput.value, dateInput.value);
     let incompleteTasks = document.getElementById('sevendays-task-list');
     incompleteTasks.appendChild(listItem);
     taskInput.value = "";
