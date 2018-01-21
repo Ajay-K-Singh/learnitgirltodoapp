@@ -52,31 +52,31 @@
         <div class="content">
             <div class="menu-items">
                 <div class="menu-list">
-                    <div class="inbox-button">
+                    <div class="inbox-button" style="cursor:default">
                         <div class="inbox-item">
                             <i class="fa fa-inbox fa-2x" aria-hidden="true"></i>
                             <span>Inbox</span>
                         </div>
                     </div>
-                    <div class="calendar">
+                    <div class="calendar" style="cursor:default">
                         <div class="calendar-item1">
                             <i class="fa fa-calendar fa-2x" aria-hidden="true"></i>
                             <span>Today</span>
                         </div>
                     </div>
-                    <div class="calendar-item2">
+                    <div class="calendar-item2" style="cursor:default">
                         <i class="fa fa-calendar fa-2x" aria-hidden="true"></i>
                         <span>Next 7 days</span>
                     </div>
                 </div>
-                <div class="project-filters">
+                <div class="project-filters" style="cursor:default">
                     <ul class="project-filter">
                         <li class="project">Projects</li>
                         <li class="filter">Fiters</li>
                     </ul>
                     <hr class="horizontal-line">
                     <div class="projects">
-                        <div class="projects-list">
+                        <div class="projects-list" style="cursor:default">
                             <div "project-1">
                                 <div class="label1">
                                     <i class="fa fa-circle" style="color:green;" aria-hidden="true"></i>
@@ -116,7 +116,7 @@
                         </div>
                     </div>
                     <div class="filters" style="display:none">
-                        <div class="filter-list">
+                        <div class="filter-list" style="cursor:default">
                             <div "filter-1">
                                 <div class="label1">
                                     <i class="fa fa-filter" style="color:green;" aria-hidden="true"></i>
@@ -162,7 +162,7 @@
                 <hr class="vertical-line" width="6" size="200">
             </div>
             <div class="navigation-divisions">
-                <div class="inbox" style="display: none;">
+                <div class="inbox" style="display: none;" style="cursor:default">
                     <h2>Inbox</h2>
                     <ul id="incomplete-task-list">
                     </ul>
@@ -176,12 +176,12 @@
                         </div>
                         <div class="buttons">
                             <button type="button" onclick="addTask()" class="btn btn-primary add-task-button">Add Task</button>
-                            <button type="button" class="btn btn-danger add-task-button">Cancel</button>
+                            <button type="button" class="btn btn-danger cancel-button">Cancel</button>
                         </div>
                     </div>
                     <div class="addtask-label-inbox">
                         <i class="fa fa-plus" style="color:green;" aria-hidden="true"></i>
-                        <div class="addtask-text-inbox">
+                        <div class="addtask-text-inbox" style="cursor:default">
                             <h4 style="margin:0px;">Add Task</h4>
                         </div>
                     </div>
@@ -201,10 +201,10 @@
                         </div>
                         <div class="buttons">
                             <button type="button" class="btn btn-primary add-task-button" onclick="addTaskToday()">Add Task</button>
-                            <button type="button" class="btn btn-danger add-task-button">Cancel</button>
+                            <button type="button" class="btn btn-danger cancel-button">Cancel</button>
                         </div>
                     </div>
-                    <div class="addtask-label-today">
+                    <div class="addtask-label-today" style="cursor:default">
                         <i class="fa fa-plus" style="color:green;" aria-hidden="true"></i>
                         <div class="addtask-text-inbox">
                             <h4 style="margin:0;">Add Task</h4>
@@ -224,10 +224,10 @@
                         </div>
                         <div class="buttons">
                             <button type="button" class="btn btn-primary add-task-button" onclick="addTaskSevenDays()">Add Task</button>
-                            <button type="button" class="btn btn-danger add-task-button">Cancel</button>
+                            <button type="button" class="btn btn-danger cancel-button">Cancel</button>
                         </div>
                     </div>
-                    <div class="addtask-label-sevendays">
+                    <div class="addtask-label-sevendays" style="cursor:default">
                         <i class="fa fa-plus" style="color:green;" aria-hidden="true"></i>
                         <div class="addtask-text-inbox">
                             <h4 style="margin:0;">Add Task</h4>

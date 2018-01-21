@@ -57,6 +57,26 @@ $(document).ready(function() {
         $(".add-task-button").css("outline", "none");
     });
 });
+$(document).ready(function() {
+    $(".cancel-button").click(function() {
+        $(".today-input").hide();
+        let taskInput1 = document.getElementById("inputTask");
+        taskInput1.value = "";
+        let dateInput1 = document.getElementById("schedule-inbox");
+        dateInput1.value = "";
+        $(".inbox-input").hide();
+        let taskInput2 = document.getElementById("inputTaskToday");
+        taskInput2.value = "";
+        let dateInput2 = document.getElementById("schedule-today");
+        dateInput2.value = "";
+        $(".sevendays-input").hide();
+        let taskInput3 = document.getElementById("sevendaysInput");
+        taskInput3.value = "";
+        let dateInput3 = document.getElementById("schedule-sevendays");
+        dateInput3.value = "";
+
+    });
+});
 
 const taskInput = document.getElementById("inputTask");
 const incompleteTasks = document.getElementsByClassName('incomplete-task-list');
@@ -87,7 +107,7 @@ const addTask = function() {
 }
 const addTaskToday = function() {
     let taskInput = document.getElementById("inputTaskToday");
-    let dateInput = document.getElementById("schedule-today").value;
+    let dateInput = document.getElementById("schedule-today");
     let listItem = createNewTaskElement(taskInput.value, dateInput.value);
     let incompleteTasks = document.getElementById('today-task-list');
     incompleteTasks.appendChild(listItem);
@@ -95,12 +115,20 @@ const addTaskToday = function() {
 }
 const addTaskSevenDays = function() {
     let taskInput = document.getElementById("sevendaysInput");
-    let dateInput = document.getElementById("schedule-sevendays").value;
+    let dateInput = document.getElementById("schedule-sevendays");
     let listItem = createNewTaskElement(taskInput.value, dateInput.value);
     let incompleteTasks = document.getElementById('sevendays-task-list');
     incompleteTasks.appendChild(listItem);
     taskInput.value = "";
 }
+
+// function onCancel() {
+//     let taskInput = document.getElementById("inputTask");
+//     taskInput.value = "";
+//     let dateInput = document.getElementById("schedule-inbox");
+//     dateInput.value = " ";
+// }
+
 
 // function addTask() {
 //     const addedTask = document.getElementById('inputTask').value;

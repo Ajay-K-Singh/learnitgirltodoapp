@@ -352,6 +352,12 @@
     margin-top: 5px;
 }
 
+.cancel-button {
+    height: 34px;
+    width: 100px;
+    margin-top: 5px;
+}
+
 #incomplete-task-list {
     list-style-type: none;
     position: relative;
