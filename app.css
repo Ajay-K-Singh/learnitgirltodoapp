@@ -175,36 +175,49 @@
 
 .addtask-label-inbox {
     display: grid;
-    grid-template-columns: 1fr 30fr;
+    grid-template-columns: 1fr 40fr;
+    margin-left: 1%;
+}
+
+.add-task-button {
+    height: 34px;
+    width: 100px;
+    margin-top: 5px;
 }
 
 .addtask-label-today {
     display: grid;
-    grid-template-columns: 1fr 30fr;
+    grid-template-columns: 1fr 40fr;
+    margin-left: 1%;
 }
 
 .addtask-label-sevendays {
     display: grid;
-    grid-template-columns: 1fr 30fr;
+    grid-template-columns: 1fr 40fr;
+    margin-left: 1%;
 }
 
-.addtask-text-inbox {
-    margin-bottom: 4%;
-}
+.addtask-text-inbox {}
 
 .inbox-input {
     display: grid;
     grid-template-rows: 2fr 1fr;
+    margin: 5px;
+    padding: 5px;
 }
 
 .today-input {
     display: grid;
     grid-template-rows: 2fr 1fr;
+    margin: 5px;
+    padding: 5px;
 }
 
 .sevendays-input {
     display: grid;
     grid-template-rows: 2fr 1fr;
+    margin: 5px;
+    padding: 5px;
 }
 
 .calendar-item1 {
@@ -242,10 +255,7 @@
     margin-right: 70px;
 }
 
-.vertical-line {
-    position: relative;
-    margin-left: 0;
-}
+.vertical-line {}
 
 .projects {
     position: relative;
