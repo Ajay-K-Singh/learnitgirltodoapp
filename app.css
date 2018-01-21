@@ -46,7 +46,8 @@
 }
 
 .container-2 {
-    width: 400px;
+    width: 700px;
+    height: 50px;
     vertical-align: middle;
     white-space: nowrap;
     position: relative;
@@ -72,8 +73,64 @@
     transition: background .55s ease;
 }
 
-.container-2 input#search {
-    width: 400px;
+.container-2 input#inputTask {
+    width: 350px;
+    height: 50px;
+    background: #fdfeff;
+    border: 1px solid black;
+    font-size: 15pt;
+    float: left;
+    color: #111314;
+    padding-left: 10px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-transition: background .55s ease;
+    -moz-transition: background .55s ease;
+    -ms-transition: background .55s ease;
+    -o-transition: background .55s ease;
+    transition: background .55s ease;
+}
+
+.container-2 input#inputTaskToday {
+    width: 350px;
+    height: 50px;
+    background: #fdfeff;
+    border: 1px solid black;
+    font-size: 15pt;
+    float: left;
+    color: #111314;
+    padding-left: 10px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-transition: background .55s ease;
+    -moz-transition: background .55s ease;
+    -ms-transition: background .55s ease;
+    -o-transition: background .55s ease;
+    transition: background .55s ease;
+}
+
+.container-2 input#sevendaysInput {
+    width: 350px;
+    height: 50px;
+    background: #fdfeff;
+    border: 1px solid black;
+    font-size: 15pt;
+    float: left;
+    color: #111314;
+    padding-left: 10px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-transition: background .55s ease;
+    -moz-transition: background .55s ease;
+    -ms-transition: background .55s ease;
+    -o-transition: background .55s ease;
+    transition: background .55s ease;
+}
+
+.container-2 input#schedule {
     height: 50px;
     background: #fdfeff;
     border: 1px solid black;
@@ -109,21 +166,75 @@
     color: #65737e;
 }
 
-.container-2 input#search::-webkit-input-placeholder {
+.container-2 input#inputTask::-webkit-input-placeholder {
     color: #65737e;
 }
 
-.container-2 input#search:-moz-placeholder {
+.container-2 input#inputTask:-moz-placeholder {
     /* Firefox 18- */
     color: #65737e;
 }
 
-.container-2 input#search::-moz-placeholder {
+.container-2 input#inputTask::-moz-placeholder {
     /* Firefox 19+ */
     color: #65737e;
 }
 
-.container-2 input#search:-ms-input-placeholder {
+.container-2 input#inputTask:-ms-input-placeholder {
+    color: #65737e;
+}
+
+.container-2 input#inputTaskToday::-webkit-input-placeholder {
+    color: #65737e;
+}
+
+.container-2 input#inputTaskToday:-moz-placeholder {
+    /* Firefox 18- */
+    color: #65737e;
+}
+
+.container-2 input#inputTaskToday::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #65737e;
+}
+
+.container-2 input#inputTaskToday:-ms-input-placeholder {
+    color: #65737e;
+}
+
+.container-2 input#sevendaysInput::-webkit-input-placeholder {
+    color: #65737e;
+}
+
+.container-2 input#sevendaysInput:-moz-placeholder {
+    /* Firefox 18- */
+    color: #65737e;
+}
+
+.container-2 input#sevendaysInput::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #65737e;
+}
+
+.container-2 input#sevendaysInput:-ms-input-placeholder {
+    color: #65737e;
+}
+
+.container-2 input#schedule::-webkit-input-placeholder {
+    color: #65737e;
+}
+
+.container-2 input#schedule:-moz-placeholder {
+    /* Firefox 18- */
+    color: #65737e;
+}
+
+.container-2 input#schedule::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #65737e;
+}
+
+.container-2 input#schedule:-ms-input-placeholder {
     color: #65737e;
 }
 
@@ -138,8 +249,8 @@
 
 .container-2 .icon {
     position: absolute;
-    top: 50%;
-    margin-left: 90%;
+    top: 6%;
+    margin-left: 45%;
     margin-top: 10px;
     z-index: 1;
     color: #4f5b66;
@@ -152,9 +263,21 @@
     border: 1px solid black
 }
 
-.container-2 input#search:hover,
-.container-2 input#search:focus,
-.container-2 input#search:active {
+.container-2 input#inputTask:hover,
+.container-2 input#inputTask:focus,
+.container-2 input#inputTask:active {
+    outline: rgb(151, 93, 93);
+}
+
+.container-2 input#inputTaskToday:hover,
+.container-2 input#inputTaskToday:focus,
+.container-2 input#inputTaskToday:active {
+    outline: rgb(151, 93, 93);
+}
+
+.container-2 input#schedule:hover,
+.container-2 input#schedule:focus,
+.container-2 input#schedule:active {
     outline: rgb(151, 93, 93);
 }
 
@@ -191,6 +314,28 @@
     height: 34px;
     width: 100px;
     margin-top: 5px;
+}
+
+#incomplete-task-list {
+    list-style-type: none;
+    position: relative;
+}
+
+.input-checkbox {
+    margin: -4px 0 0;
+    height: 32px;
+    width: 35px;
+}
+
+.list-item {
+    display: grid;
+    grid-template-columns: 1fr 50fr;
+    font-size: 25px;
+    margin-left: -3%;
+}
+
+#task-list p {
+    font-size: 25px;
 }
 
 .addtask-label-today {
@@ -330,4 +475,4 @@
     width: 200px;
     left: 38%;
     z-index: 1;
-} *;
+} *

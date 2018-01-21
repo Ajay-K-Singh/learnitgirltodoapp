@@ -164,15 +164,18 @@
             <div class="navigation-divisions">
                 <div class="inbox" style="display: none;">
                     <h2>Inbox</h2>
+                    <ul id="incomplete-task-list">
+                    </ul>
                     <div class="inbox-input" style="display:none">
                         <div class="input-task">
                             <div class="container-2">
                                 <span class="icon"><i class="fa fa-calendar fa-2x" aria-hidden="true"></i></span>
-                                <input type="search" id="search" placeholder="Add Task" />
+                                <input type="text" id="inputTask" placeholder="Add Task" />
+                                <input type="date" id="schedule" data-date-inline-picker="true" />
                             </div>
                         </div>
                         <div class="buttons">
-                            <button type="button" class="btn btn-primary add-task-button">Add Task</button>
+                            <button type="button" onclick="addTask()" class="btn btn-primary add-task-button">Add Task</button>
                             <button type="button" class="btn btn-danger add-task-button">Cancel</button>
                         </div>
                     </div>
@@ -186,16 +189,18 @@
 
                 <div class="today" style="display: none;">
                     <h2>Today</h2>
+                    <ul id="today-task-list"></ul>
                     <div class="today-input" style="display:none">
                         <div class="input-task">
                             <div class="container-2">
                                 <span class="icon"><i class="fa fa-calendar fa-2x" aria-hidden="true"></i></span>
-                                <input type="search" id="search" placeholder="Add Task" />
+                                <input type="search" id="inputTaskToday" placeholder="Add Task" />
+                                <input type="date" id="schedule" data-date-inline-picker="true" />
                             </div>
 
                         </div>
                         <div class="buttons">
-                            <button type="button" class="btn btn-primary add-task-button">Add Task</button>
+                            <button type="button" class="btn btn-primary add-task-button" onclick="addTaskToday()">Add Task</button>
                             <button type="button" class="btn btn-danger add-task-button">Cancel</button>
                         </div>
                     </div>
@@ -208,15 +213,17 @@
                 </div>
                 <div class="plus-seven-days" style="display: none;">
                     <h2>Next 7 days</h2>
+                    <ul id="sevendays-task-list"></ul>
                     <div class="sevendays-input" style="display:none">
                         <div class="input-task">
                             <div class="container-2">
                                 <span class="icon"><i class="fa fa-calendar fa-2x" aria-hidden="true"></i></span>
-                                <input type="search" id="search" placeholder="Add Task" />
+                                <input type="text" id="sevendaysInput" placeholder="Add Task" />
+                                <input type="date" id="schedule" data-date-inline-picker="true" />
                             </div>
                         </div>
                         <div class="buttons">
-                            <button type="button" class="btn btn-primary add-task-button">Add Task</button>
+                            <button type="button" class="btn btn-primary add-task-button" onclick="addTaskSevenDays()">Add Task</button>
                             <button type="button" class="btn btn-danger add-task-button">Cancel</button>
                         </div>
                     </div>
