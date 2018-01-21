@@ -15,6 +15,11 @@ todosRef.on('value', gotData, error);
 
 function gotData(data) {
     const todos = data.val();
+    const classList = document.querySelectorAll('.list-item');
+
+    for (var i = 0; i < classList; i++) {
+        classList[i].remove();
+    }
     if (todos != null) {
         let keys = Object.keys(todos);
         for (let i = 0; i < keys.length; i++) {
@@ -24,7 +29,7 @@ function gotData(data) {
             const dateToBeCompleted = todos[key].dateToBeCompleted;
             console.log();
             let listItem = createNewTaskElement(isTodoCompleted, task, dateToBeCompleted);
-            let incompleteTasks = document.getElementById('todos-main-page');
+            const incompleteTasks = document.getElementById('todos-main-page');
             incompleteTasks.appendChild(listItem);
         }
     }
