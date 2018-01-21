@@ -11,8 +11,37 @@ firebase.initializeApp(config);
 //Todos ref
 
 const todosRef = firebase.database().ref('todos');
+todosRef.on('value', gotData, error);
 
+function gotData(data) {
+    const todos = data.val();
+    if (todos != null) {
+        let keys = Object.keys(todos);
+        for (let i = 0; i < keys.length; i++) {
+            const key = keys[i];
+            const isTodoCompleted = todos[key].isCompleted;
+            const task = todos[key].task;
+            const dateToBeCompleted = todos[key].dateToBeCompleted;
+            console.log();
+            let listItem = createNewTaskElement(isTodoCompleted, task, dateToBeCompleted);
+            let incompleteTasks = document.getElementById('todos-main-page');
+            incompleteTasks.appendChild(listItem);
+        }
+    }
+}
 
+function error(err) {
+    console.log(err);
+}
+
+$(document).ready(function() {
+    $(".task-icon").click(function() {
+        $(".todo-main").show();
+        $(".inbox").hide();
+        $(".today").hide();
+        $(".plus-seven-days").hide();
+    });
+});
 $(document).ready(function() {
     $(".filter").click(function() {
         $(".filters").show();
@@ -30,6 +59,7 @@ $(document).ready(function() {
         $(".inbox").show();
         $(".today").hide();
         $(".plus-seven-days").hide();
+        $(".todo-main").hide();
     });
 });
 $(document).ready(function() {
@@ -37,6 +67,7 @@ $(document).ready(function() {
         $(".today").show();
         $(".plus-seven-days").hide();
         $(".inbox").hide();
+        $(".todo-main").hide();
     });
 });
 $(document).ready(function() {
@@ -44,6 +75,7 @@ $(document).ready(function() {
         $(".plus-seven-days").show();
         $(".inbox").hide();
         $(".today").hide();
+        $(".todo-main").hide();
     });
 });
 $(document).ready(function() {
@@ -95,17 +127,18 @@ $(document).ready(function() {
 
 const taskInput = document.getElementById("inputTask");
 const incompleteTasks = document.getElementsByClassName('incomplete-task-list');
-const createNewTaskElement = function(taskString, dateOfTask) {
+const createNewTaskElement = function(isTodoCompleted, taskString, dateToBeCompleted) {
 
     var listItem = document.createElement("li");
     listItem.className = "list-item";
     var checkBox = document.createElement("input");
     checkBox.type = "checkbox";
+    checkBox.value = isTodoCompleted;
     checkBox.className = "input-checkbox";
     var label = document.createElement("label");
     var labelDate = document.createElement("label");
     labelDate.className = "date-string";
-    labelDate.innerText = dateOfTask;
+    labelDate.innerText = dateToBeCompleted;
     label.innerText = taskString;
     listItem.appendChild(checkBox);
     listItem.appendChild(label);
@@ -115,12 +148,11 @@ const createNewTaskElement = function(taskString, dateOfTask) {
 const addTask = function() {
     let taskInput = document.getElementById("inputTask");
     let dateInput = document.getElementById("schedule-inbox");
-    let listItem = createNewTaskElement(taskInput.value, dateInput.value);
+    let isCompleted = false;
+    let listItem = createNewTaskElement(isCompleted, taskInput.value, dateInput.value);
     let incompleteTasks = document.getElementById('incomplete-task-list');
     incompleteTasks.appendChild(listItem);
-    saveTask(taskInput.value, dateInput.value);
-    taskInput.value = "";
-    dateInput.value = "";
+    saveTask(isCompleted, taskInput.value, dateInput.value);
 }
 const addTaskToday = function() {
     let taskInput = document.getElementById("inputTaskToday");
@@ -142,9 +174,10 @@ const addTaskSevenDays = function() {
 }
 
 
-function saveTask(task, dateToBeCompleted) {
+function saveTask(isCompleted, task, dateToBeCompleted) {
     const newTodoRef = todosRef.push();
     newTodoRef.set({
+        isCompleted,
         task,
         dateToBeCompleted
     })
