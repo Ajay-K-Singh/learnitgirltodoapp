@@ -29,7 +29,7 @@
         <div class="todos">
             <img src="public/todos3.png" class="logo">
         </div>
-        <div class="navigation-items">
+        <div class="navigation-items" onclick="onTasks()">
             <div class="task-icon">
                 <i class="fa fa-tasks fa-2x" aria-hidden="true"></i>
             </div>
@@ -52,24 +52,28 @@
         <div class="content">
             <div class="menu-items">
                 <div class="menu-list">
-                    <div class="inbox-button" style="cursor:default">
+                    <div class="inbox-button" onclick="inboxClicked()" style="cursor:default">
                         <div class="inbox-item">
                             <i class="fa fa-inbox fa-2x" aria-hidden="true"></i>
                             <span>Inbox</span>
                         </div>
                     </div>
-                    <div class="calendar" style="cursor:default">
+                    <div class="calendar" onclick="onTodayClicked()" style="cursor:default">
                         <div class="calendar-item1">
                             <i class="fa fa-calendar fa-2x" aria-hidden="true"></i>
                             <span>Today</span>
                         </div>
                     </div>
-                    <div class="calendar-item2" style="cursor:default">
+                    <div class="calendar-item2" onclick="onSevenDaysClicked()" style="cursor:default">
                         <i class="fa fa-calendar fa-2x" aria-hidden="true"></i>
                         <span>Next 7 days</span>
                     </div>
+                    <div class="completed-todos-button" onclick="onCompletedTodos()" style="cursor:default">
+                        <i class="fa fa-tasks fa-2x" style="color:green; cursor:default" aria-hidden="true"></i>
+                        <span>Completed Tasks</span>
+                    </div>
                 </div>
-                <div class="project-filters" style="cursor:default">
+                <div class="project-filters" style="cursor:default ">
                     <ul class="project-filter">
                         <li class="project">Projects</li>
                         <li class="filter">Fiters</li>
@@ -162,7 +166,7 @@
                 <hr class="vertical-line" width="1" size="200">
             </div>
             <div class="navigation-divisions">
-                <div class="todo-main" style="cursor:default">
+                <div class="todo-main">
                     <h2>Todos</h2>
                     <ul id="todos-main-page"></ul>
                     <ul id="incompleted-task-list"></ul>
@@ -186,7 +190,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="inbox" style="display: none;" style="cursor:default">
+                <div class="inbox" style="cursor:default; display:none;">
                     <h2>Inbox</h2>
                     <ul id="incomplete-task-list">
                     </ul>
@@ -257,6 +261,10 @@
                             <h4 style="margin:0;">Add Task</h4>
                         </div>
                     </div>
+                </div>
+                <div class="completed-todos" style="display: none;">
+                    <h2>Completed Todos</h2>
+                    <ul id="completed-task-list"></ul>
                 </div>
             </div>
         </div>

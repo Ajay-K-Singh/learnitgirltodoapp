@@ -11,14 +11,16 @@ firebase.initializeApp(config);
 //Todos ref
 
 const todosRef = firebase.database().ref('todos');
+const completedTodosRef = firebase.database().ref('completedTodos');
 todosRef.on('value', gotData, error);
+completedTodosRef.on('value', gotTodosCompleted, error);
 
 function gotData(data) {
     const todos = data.val();
-    const classList = document.querySelectorAll('.list-item');
+    const classList = document.getElementById('incompleted-task-list');
 
-    for (var i = 0; i < classList; i++) {
-        classList[i].remove();
+    for (var i = 0; i < classList.children.length; i++) {
+        classList.children[i].remove();
     }
     if (todos != null) {
         let keys = Object.keys(todos);
@@ -27,9 +29,10 @@ function gotData(data) {
             const isTodoCompleted = todos[key].isCompleted;
             const task = todos[key].task;
             const dateToBeCompleted = todos[key].dateToBeCompleted;
+
             console.log();
-            let listItem = createNewTaskElement(isTodoCompleted, task, dateToBeCompleted);
-            const incompleteTasks = document.getElementById('todos-main-page');
+            let listItem = createNewTaskElement(keys[i], isTodoCompleted, task, dateToBeCompleted);
+            const incompleteTasks = document.getElementById('incompleted-task-list');
             incompleteTasks.appendChild(listItem);
         }
     }
@@ -39,71 +42,158 @@ function error(err) {
     console.log(err);
 }
 
-$(document).ready(function() {
-    $(".task-icon").click(function() {
-        $(".todo-main").show();
-        $(".inbox").hide();
-        $(".today").hide();
-        $(".plus-seven-days").hide();
+function gotTodosCompleted(completedTodos) {
+    const completedTodosList = completedTodos.val();
+    if (completedTodosList != null) {
+        let keys = Object.keys(completedTodosList);
+        for (let i = 0; i < keys.length; i++) {
+            const key = keys[i];
+            const isTodoCompleted = completedTodosList[key].isCompleted;
+            const task = completedTodosList[key].task;
+            const dateToBeCompleted = completedTodosList[key].dateToBeCompleted;
+            let listItem = createNewTaskElement(keys[i], isTodoCompleted, task, dateToBeCompleted);
+            const completeTasks = document.getElementById('completed-task-list');
+            completeTasks.appendChild(listItem);
+        }
+
+    }
+}
+const createNewTaskElement = function(key, isTodoCompleted, taskString, dateToBeCompleted) {
+
+    var listItem = document.createElement("li");
+    listItem.className = "list-item";
+    listItem.setAttribute("id", key);
+    var input = document.createElement("input");
+    input.type = "checkbox";
+    input.checked = isTodoCompleted;
+    input.onchange = function isTaskCompleted() {
+        isTodoCompletedFunc(listItem, input.checked);
+    };
+    input.className = "input-checkbox";
+    var label = document.createElement("label");
+    var labelDate = document.createElement("label");
+    labelDate.className = "date-string";
+    labelDate.innerText = dateToBeCompleted;
+    label.innerText = taskString;
+    listItem.appendChild(input);
+    listItem.appendChild(label);
+    listItem.appendChild(labelDate)
+    return listItem;
+}
+
+function isTodoCompletedFunc(listItem, value) {
+    const listItemKey = listItem.id;
+    const putIncompletedList = completedToDos(listItem, listItem.id);
+    $(listItem).remove();
+    todosRef.child(listItemKey).remove();
+}
+
+function completedToDos(listItem, key) {
+    saveCompletedTodos(listItem, key)
+}
+
+
+function saveCompletedTodos(listItem, key) {
+    const isCompleted = listItem.childNodes[0].checked;
+    const task = listItem.childNodes[1].innerText;
+    const date = listItem.childNodes[2].innerText;
+    const dateToBeCompleted = new Date(date);
+    const newTodoRef = completedTodosRef.push();
+    newTodoRef.set({
+        isCompleted,
+        task,
+        key,
+        dateToBeCompleted
+    })
+}
+
+function onCompletedTodos() {
+    const completedTodos = document.getElementsByClassName('completed-todos');
+    const navigationDivisions = document.getElementsByClassName('navigation-divisions')[0].children;
+    Object.keys(navigationDivisions).forEach(key => {
+        navigationDivisions[key].style.display = 'none';
     });
-});
-$(document).ready(function() {
-    $(".filter").click(function() {
-        $(".filters").show();
-        $(".projects").hide();
+    completedTodos[0].style.display = 'block';
+}
+
+function inboxClicked() {
+    const inbox = document.getElementsByClassName('inbox');
+    const navigationDivisions = document.getElementsByClassName('navigation-divisions')[0].children;
+    Object.keys(navigationDivisions).forEach(key => {
+        navigationDivisions[key].style.display = 'none';
     });
-});
-$(document).ready(function() {
-    $(".project").click(function() {
-        $(".filters").hide();
-        $(".projects").show();
+    inbox[0].style.display = 'block';
+}
+
+function onTodayClicked() {
+    const today = document.getElementsByClassName('today');
+    const navigationDivisions = document.getElementsByClassName('navigation-divisions')[0].children;
+    Object.keys(navigationDivisions).forEach(key => {
+        navigationDivisions[key].style.display = 'none';
     });
-});
-$(document).ready(function() {
-    $(".inbox-item").click(function() {
-        $(".inbox").show();
-        $(".today").hide();
-        $(".plus-seven-days").hide();
-        $(".todo-main").hide();
+    today[0].style.display = 'block';
+}
+
+function onSevenDaysClicked() {
+    const sevenDays = document.getElementsByClassName('plus-seven-days');
+    const navigationDivisions = document.getElementsByClassName('navigation-divisions')[0].children;
+    Object.keys(navigationDivisions).forEach(key => {
+        navigationDivisions[key].style.display = 'none';
     });
-});
-$(document).ready(function() {
-    $(".calendar-item1").click(function() {
-        $(".today").show();
-        $(".plus-seven-days").hide();
-        $(".inbox").hide();
-        $(".todo-main").hide();
+    sevenDays[0].style.display = 'block';
+}
+
+function onTasks() {
+    const tasksTodos = document.getElementsByClassName('todo-main');
+    const navigationDivisions = document.getElementsByClassName('navigation-divisions')[0].children;
+    Object.keys(navigationDivisions).forEach(key => {
+        navigationDivisions[key].style.display = 'none';
     });
-});
-$(document).ready(function() {
-    $(".calendar-item2").click(function() {
-        $(".plus-seven-days").show();
-        $(".inbox").hide();
-        $(".today").hide();
-        $(".todo-main").hide();
-    });
-});
-$(document).ready(function() {
-    $(".addtask-label-inbox").click(function() {
-        $(".inbox-input").show();
-        $(".today-input").hide();
-        $(".sevendays-input").hide();
-    });
-});
-$(document).ready(function() {
-    $(".addtask-label-today").click(function() {
-        $(".today-input").show();
-        $(".inbox-input").hide();
-        $(".sevendays-input").hide();
-    });
-});
-$(document).ready(function() {
-    $(".addtask-label-sevendays").click(function() {
-        $(".sevendays-input").show();
-        $(".today-input").hide();
-        $(".inbox-input").hide();
-    });
-});
+    tasksTodos[0].style.display = 'block';
+}
+
+// $(document).ready(function() {
+//     setTimeout(function() {
+//         const taskCompleted = document.getElementById('completed-task-list');
+//         const checkBoxes = [];
+
+//         const taskList = document.querySelectorAll('.list-item');
+//         for (let i = 0; i < taskList.length; i++) {
+//             const checkBox = taskList[i].children['0'];
+//             checkBoxes.push(checkBox);
+//         }
+//         for (let i = 0; i < taskList.length; i++) {
+//             const checkBox = taskList[i].children['0'];
+
+//             checkBoxes.push(checkBox);
+//             let isTaskCompleted = function(taskList) {
+//                 console.log(checkBox);
+//             }
+//         }
+
+
+//         // checkBoxes.forEach(function(checkbox) {
+//         //     checkbox.onchange = taskCompleted(checkbox.parent);
+//         // });
+
+
+
+
+//     }, 3000);
+// });
+
+
+// function taskiconClicked() {
+//     const todosDiv = document.getElementsByClassName('todo-main');
+//     if (todosDiv.style.display === "none") {
+//         todosDiv.style.display = 'block';
+//     } else todosDiv.style.display = 'none';
+//     const todosMainDiv = document.getElementsByClassName('navigation-divisions');
+//     todosMainDiv.innerHTML = todosDiv;
+
+// }
+
+
 $(document).ready(function() {
     $("add-task-button").click(function() {
         $(".add-task-button").css("outline", "none");
@@ -130,72 +220,111 @@ $(document).ready(function() {
     });
 });
 
-const taskInput = document.getElementById("inputTask");
-const incompleteTasks = document.getElementsByClassName('incomplete-task-list');
-const createNewTaskElement = function(isTodoCompleted, taskString, dateToBeCompleted) {
+// const createNewTaskElement = function(isTodoCompleted, taskString, dateToBeCompleted) {
 
-    var listItem = document.createElement("li");
-    listItem.className = "list-item";
-    var checkBox = document.createElement("input");
-    checkBox.type = "checkbox";
-    checkBox.value = isTodoCompleted;
-    checkBox.className = "input-checkbox";
-    var label = document.createElement("label");
-    var labelDate = document.createElement("label");
-    labelDate.className = "date-string";
-    labelDate.innerText = dateToBeCompleted;
-    label.innerText = taskString;
-    listItem.appendChild(checkBox);
-    listItem.appendChild(label);
-    listItem.appendChild(labelDate)
-    return listItem;
-}
-const addTask = function() {
-    let taskInput = document.getElementById("inputTask");
-    let dateInput = document.getElementById("schedule-inbox");
-    let isCompleted = false;
-    let listItem = createNewTaskElement(isCompleted, taskInput.value, dateInput.value);
-    let incompleteTasks = document.getElementById('incomplete-task-list');
-    incompleteTasks.appendChild(listItem);
-    saveTask(isCompleted, taskInput.value, dateInput.value);
-}
-const addTaskTodos = function() {
-    let taskInput = document.getElementById("inputTaskTodos");
-    let dateInput = document.getElementById("schedule-todos");
-    let isCompleted = false;
-    let listItem = createNewTaskElement(isCompleted, taskInput.value, dateInput.value);
-    let incompleteTasks = document.getElementById('incomplete-task-list');
-    incompleteTasks.appendChild(listItem);
-    saveTask(isCompleted, taskInput.value, dateInput.value);
-}
-const addTaskToday = function() {
-    let taskInput = document.getElementById("inputTaskToday");
-    let dateInput = document.getElementById("schedule-today");
-    let listItem = createNewTaskElement(taskInput.value, dateInput.value);
-    let incompleteTasks = document.getElementById('today-task-list');
-    incompleteTasks.appendChild(listItem);
-    taskInput.value = "";
-    dateInput.value = "";
-}
-const addTaskSevenDays = function() {
-    let taskInput = document.getElementById("sevendaysInput");
-    let dateInput = document.getElementById("schedule-sevendays");
-    let listItem = createNewTaskElement(taskInput.value, dateInput.value);
-    let incompleteTasks = document.getElementById('sevendays-task-list');
-    incompleteTasks.appendChild(listItem);
-    taskInput.value = "";
-    dateInput.value = "";
-}
+//     var listItem = document.createElement("li");
+//     listItem.className = "list-item";
+//     var checkBox = document.createElement("input");
+//     checkBox.type = "checkbox";
+//     checkBox.value = isTodoCompleted;
+//     checkBox.className = "input-checkbox";
+//     var label = document.createElement("label");
+//     var labelDate = document.createElement("label");
+//     labelDate.className = "date-string";
+//     labelDate.innerText = dateToBeCompleted;
+//     label.innerText = taskString;
+//     listItem.appendChild(checkBox);
+//     listItem.appendChild(label);
+//     listItem.appendChild(labelDate)
+//     return listItem;
+// }
+// document.addEventListener('DOMContentLoaded', function() {
+//     // your code here
+//     const taskInput = document.getElementById("inputTask");
+//     const incompleteTasks = document.getElementById('incompleted-task-list');
+//     const completeTasks = document.getElementById('completed-task-list');
 
 
-function saveTask(isCompleted, task, dateToBeCompleted) {
-    const newTodoRef = todosRef.push();
-    newTodoRef.set({
-        isCompleted,
-        task,
-        dateToBeCompleted
-    })
-}
+
+
+//     const addTask = function() {
+//         let taskInput = document.getElementById("inputTask");
+//         let dateInput = document.getElementById("schedule-inbox");
+//         let isCompleted = false;
+//         let listItem = createNewTaskElement(isCompleted, taskInput.value, dateInput.value);
+//         incompleteTasks.appendChild(listItem);
+//         saveTask(isCompleted, taskInput.value, dateInput.value);
+//         bindTaskEvents(listItem, taskcompleted);
+//     }
+
+//     const taskcompleted = function() {
+//         const listItem = this.parentNode;
+//         completeTasks.appendChild(listItem);
+//         bindTaskEvents(listItem, taskIncomplete);
+//     }
+
+//     const taskIncomplete = function() {
+//         const listItem = this.parentNode;
+//         incompleteTasks.appendChild(lisstItem);
+//         bindTaskEvents(listItem, taskcompleted);
+//     }
+
+//     var bindTaskEvents = function(listItem, checkBoxEventHandler) {
+//         var checkBox = listItem.querySelector("input[type=checkbox]");
+//         checkBox.onchange = checkBoxEventHandler;
+//     }
+
+//     for (var i = 0; i < incompleteTasks.children.length; i++) {
+//         bindTaskEvents(incompleteTasks.children[i], taskCompleted);
+//     }
+//     for (var i = 0; i < completeTasks.children.length; i++) {
+//         bindTaskEvents(completeTasks.children[i], taskIncomplete);
+//     }
+
+//     const addTaskTodos = function() {
+//         let taskInput = document.getElementById("inputTaskTodos");
+//         let dateInput = document.getElementById("schedule-todos");
+//         let isCompleted = false;
+//         let listItem = createNewTaskElement(isCompleted, taskInput.value, dateInput.value);
+//         let incompleteTasks = document.getElementById('incomplete-task-list');
+//         incompleteTasks.appendChild(listItem);
+//         saveTask(isCompleted, taskInput.value, dateInput.value);
+//     }
+//     const addTaskToday = function() {
+//         let taskInput = document.getElementById("inputTaskToday");
+//         let dateInput = document.getElementById("schedule-today");
+//         let listItem = createNewTaskElement(taskInput.value, dateInput.value);
+//         let incompleteTasks = document.getElementById('today-task-list');
+//         incompleteTasks.appendChild(listItem);
+//         taskInput.value = "";
+//         dateInput.value = "";
+//     }
+//     const addTaskSevenDays = function() {
+//         let taskInput = document.getElementById("sevendaysInput");
+//         let dateInput = document.getElementById("schedule-sevendays");
+//         let listItem = createNewTaskElement(taskInput.value, dateInput.value);
+//         let incompleteTasks = document.getElementById('sevendays-task-list');
+//         incompleteTasks.appendChild(listItem);
+//         taskInput.value = "";
+//         dateInput.value = "";
+//     }
+
+
+//     function saveTask(isCompleted, task, dateToBeCompleted) {
+//         const newTodoRef = todosRef.push();
+//         newTodoRef.set({
+//             isCompleted,
+//             task,
+//             dateToBeCompleted
+//         })
+//     }
+// }, false);
+
+
+
+
+
+
 // function onCancel() {
 //     let taskInput = document.getElementById("inputTask");
 //     taskInput.value = "";
