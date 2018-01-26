@@ -8,6 +8,8 @@
     <meta name="author" content="Ajay Kumar Singh and Harshitha">
     <link rel="stylesheet" href="app.css">
     <script src="jquery-3.2.1.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <!-- jQuery library -->
@@ -51,12 +53,6 @@
         <div class="content">
             <div class="menu-items">
                 <div class="menu-list">
-                    <div class="inbox-button" onclick="inboxClicked()" style="cursor:default">
-                        <div class="inbox-item">
-                            <i class="fa fa-inbox fa-2x" aria-hidden="true"></i>
-                            <span>Inbox</span>
-                        </div>
-                    </div>
                     <div class="calendar" onclick="onTodayClicked()" style="cursor:default">
                         <div class="calendar-item1">
                             <i class="fa fa-calendar fa-2x" aria-hidden="true"></i>
@@ -172,46 +168,25 @@
                     <div class="todos-input" style="display:none">
                         <div class="input-task">
                             <div class="container-2">
-                                <span class="icon"><i class="fa fa-calendar fa-2x dateIcon"  aria-hidden="true"></i></span>
+                                <span class="icon"><i class="fa fa-calendar fa-2x"  aria-hidden="true"></i></span>
                                 <input type="text" id="inputTaskTodos" placeholder="Add Task" />
                                 <input type="date" id="schedule-todos" />
                             </div>
                         </div>
                         <div class="buttons">
                             <button type="button" onclick="onAddTodo()" class="btn btn-primary add-task-button">Add Task</button>
-                            <button type="button" class="btn btn-danger cancel-button">Cancel</button>
+                            <button type="button" onclick="onCancelTodos()" class="btn btn-danger cancel-adding-button">Cancel</button>
                         </div>
                     </div>
-                    <div class="addtask-label-todos" onclick="onAddTaskTodos()">
-                        <i class="fa fa-plus" style="color:green;" aria-hidden="true"></i>
-                        <div class="addtask-text-inbox" style="cursor:default">
-                            <h4 style="margin:0px;">Add Task</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="inbox" style="cursor:default; display:none;">
-                    <h2>Inbox</h2>
-                    <div class="inbox-input" style="display:none">
-                        <div class="input-task">
-                            <div class="container-2">
-                                <span class="icon"><i class="fa fa-calendar fa-2x" aria-hidden="true"></i></span>
-                                <input type="text" id="inputTask" placeholder="Add Task" />
-                                <input type="date" id="schedule-inbox" data-date-inline-picker="true" />
+                    <div>
+                        <a href="#" class="addtask-label-todos" onclick="onAddTaskTodos()">
+                            <span class="plusIcon"><i class="fa fa-plus" style="color:green;" aria-hidden="true"></i></span>
+                            <div class="addtask-text-inbox" style="cursor:default">
+                                <h4 style="margin:0px;">Add Task</h4>
                             </div>
-                        </div>
-                        <div class="buttons">
-                            <button type="button" onclick="addTask()" class="btn btn-primary add-task-button">Add Task</button>
-                            <button type="button" class="btn btn-danger cancel-button">Cancel</button>
-                        </div>
-                    </div>
-                    <div class="addtask-label-inbox" onclick="onAddTask()">
-                        <i class="fa fa-plus" style="color:green;" aria-hidden="true"></i>
-                        <div class="addtask-text-inbox" style="cursor:default">
-                            <h4 style="margin:0px;">Add Task</h4>
-                        </div>
+                        </a>
                     </div>
                 </div>
-
                 <div class="today" style="display: none;">
                     <h2>Today</h2>
                     <ul id="today-task-list"></ul>

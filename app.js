@@ -58,26 +58,34 @@ function error(err) {
 }
 
 const createNewTaskElement = function(key, isTodoCompleted, taskString, dateToBeCompleted) {
-    var listItem = document.createElement("li");
+    const listItem = document.createElement("li");
     if (isTodoCompleted === false) {
         listItem.className = "list-item";
     } else listItem.className = "completed-list-item";
     listItem.setAttribute("id", key);
-    var input = document.createElement("input");
+    const spanEdit = document.createElement('span');
+    spanEdit.className = "editIcon";
+    spanEdit.innerHTML = '<i class="fa fa-pencil-square-o" style="color: black;" onclick="editTodo(event)" aria-hidden="true"></i>';
+    const spanDelete = document.createElement('span');
+    spanDelete.className = "deleteIcon";
+    spanDelete.innerHTML = '<i class="fa fa-trash-o" onclick="onDeleteTodo(event)" aria-hidden="true"></i>';
+    const input = document.createElement("input");
     input.type = "checkbox";
     input.checked = isTodoCompleted;
     input.onchange = function isTaskCompleted() {
         isTodoCompletedFunc(listItem, input.checked);
     };
     input.className = "input-checkbox";
-    var label = document.createElement("label");
-    var labelDate = document.createElement("label");
+    const label = document.createElement("label");
+    const labelDate = document.createElement("label");
     if (isTodoCompleted === false) {
         labelDate.className = "date-string";
     } else labelDate.className = "completed-date-string";
     labelDate.innerText = dateToBeCompleted;
     label.innerText = taskString;
     if (isTodoCompleted === false) {
+        listItem.appendChild(spanEdit);
+        listItem.appendChild(spanDelete);
         listItem.appendChild(input);
     }
     listItem.appendChild(label);
@@ -105,22 +113,56 @@ function saveTodos(todo, dateTobeCompleted) {
 }
 
 function isTodoCompletedFunc(listItem, value) {
-    if (listItem.childNodes[0].checked) {
+    if (listItem.childNodes[2].checked) {
         const listItemKey = listItem.id;
         const putInCompletedList = completedToDos(listItem, listItem.id);
         todosRef.child(listItemKey).remove();
     }
 }
 
+function editTodo(event) {
+    const spanListItem = event.target.parentNode;
+    const editElement = spanListItem.parentNode;
+    const inboxInput = document.getElementsByClassName('todos-input');
+    inboxInput[0].style.display = 'block';
+    const inputFields = inboxInput[0].getElementsByTagName('input');
+    const editTask = editElement.getElementsByTagName('label');
+    inputFields[0].value = editTask[0].innerHTML;
+    inputFields[1].value = editTask[1].innerHTML;
+    $(editElement).remove();
+    todosRef.child(editElement.id).remove();
+}
+
+function onDeleteTodo(event) {
+    const spanListItem = event.target.parentNode;
+    const deleteElement = spanListItem.parentNode;
+    $(deleteElement).remove();
+    todosRef.child(deleteElement.id).remove();
+}
+
+// function updateEditedTodos(key) {
+//     const isCompleted = false;
+//     const inboxInput = document.getElementsByClassName('todos-input');
+//     const inputFields = inboxInput[0].getElementsByTagName('input');
+//     const task = inputFields[0].value;
+//     const dateTobeCompleted = inputFields[1].value;
+//     const editedTodo = task;
+//     const updatedTodo = {
+//         isCompleted,
+//         task,
+//         dateTobeCompleted
+//     };
+//     todosRef.child(key).update(updatedTodo);
+// }
 
 function completedToDos(listItem, key) {
     saveCompletedTodos(listItem, key)
 }
 
 function saveCompletedTodos(listItem, key) {
-    const isCompleted = listItem.childNodes[0].checked;
-    const task = listItem.childNodes[1].innerText;
-    const dateToBeCompleted = listItem.childNodes[2].innerText;
+    const isCompleted = listItem.childNodes[2].checked;
+    const task = listItem.childNodes[3].innerText;
+    const dateToBeCompleted = listItem.childNodes[4].innerText;
     const newTodoRef = completedTodosRef.push();
     newTodoRef.set({
         isCompleted,
@@ -174,6 +216,14 @@ function onTasks() {
 function onAddTask() {
     const inboxInput = document.getElementsByClassName('inbox-input');
     inboxInput[0].style.display = 'block';
+}
+
+function onCancelTodos() {
+    const inboxInput = document.getElementsByClassName('todos-input');
+    inboxInput[0].style.display = 'none';
+    const inputFields = inboxInput[0].getElementsByTagName('input');
+    inputFields[0].value = "";
+    inputFields[1].value = "";
 }
 
 $('.dateIcon').click(function(event) {
@@ -509,4 +559,4 @@ $(document).ready(function() {
 //     div.appendChild(checkIcon);
 //     document.appendChild(para);
 //     document.getElementsByClassName('task-list').innerHTML = div;
-// }
+//}
