@@ -192,6 +192,11 @@ function onAddTaskTodos() {
     inboxInput[0].style.display = 'block';
 }
 
+function onAddTaskTodosToday() {
+    const inboxInput = document.getElementsByClassName('today-input');
+    inboxInput[0].style.display = 'block';
+}
+
 function onCompletedTodos() {
     const completedTodos = document.getElementsByClassName('completed-todos');
     const navigationDivisions = document.getElementsByClassName('navigation-divisions')[0].children;
@@ -215,8 +220,21 @@ function inboxClicked() {
 }
 
 function onTodayClicked() {
+    const dateToday = new Date();
+    const todaysDate = dateConversion(dateToday);
+    const dateElement = document.getElementById('todays-date');
+    dateElement.innerHTML = todaysDate;
     const today = document.getElementsByClassName('today');
     navigateToDivision(today);
+}
+
+function dateConversion(dateToConvert) {
+    const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thurs', 'Fri', 'Sat'];
+    const months = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+    const day = daysOfWeek[dateToConvert.getDay()];
+    const date = dateToConvert.getDate();
+    const month = months[dateToConvert.getMonth()];
+    return `${day} ${date} ${month}`;
 }
 
 function onSevenDaysClicked() {

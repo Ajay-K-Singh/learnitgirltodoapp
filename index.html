@@ -202,7 +202,10 @@
                     </div>
                 </div>
                 <div class="today" style="display: none;">
-                    <h2>Today</h2>
+                    <div class="today-header">
+                        <h2>Today</h2>
+                        <p id="todays-date"></p>
+                    </div>
                     <ul id="today-task-list"></ul>
                     <div class="today-input" style="display:none">
                         <div class="input-task">
@@ -211,18 +214,19 @@
                                 <input type="search" id="inputTaskToday" placeholder="Add Task" />
                                 <input type="date" id="schedule-today" data-date-inline-picker="true" />
                             </div>
-
                         </div>
                         <div class="buttons">
                             <button type="button" class="btn btn-primary add-task-button" onclick="addTaskToday()">Add Task</button>
-                            <button type="button" class="btn btn-danger cancel-button">Cancel</button>
+                            <button type="button" class="btn btn-danger cancel-adding-button">Cancel</button>
                         </div>
                     </div>
-                    <div class="addtask-label-today" style="cursor:default">
-                        <i class="fa fa-plus" style="color:green;" aria-hidden="true"></i>
-                        <div class="addtask-text-inbox">
-                            <h4 style="margin:0;">Add Task</h4>
-                        </div>
+                    <div>
+                        <a href="#" class="addtask-label-today" onclick="onAddTaskTodosToday()" style="cursor:default">
+                            <span class="plusIcon"><i class="fa fa-plus" style="color:green;" aria-hidden="true"></i></span>
+                            <div class="addtask-text-inbox">
+                                <h4 style="margin:0;">Add Task</h4>
+                            </div>
+                        </a>
                     </div>
                 </div>
                 <div class="plus-seven-days" style="display: none;">
