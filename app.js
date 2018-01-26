@@ -20,7 +20,6 @@ function gotData(data) {
     const todos = data.val();
     const classList = document.getElementById('incompleted-task-list');
     classList.innerHTML = '';
-
     if (todos != null) {
         let keys = Object.keys(todos);
         for (let i = 0; i < keys.length; i++) {
