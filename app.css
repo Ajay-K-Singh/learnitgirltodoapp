@@ -135,7 +135,7 @@
         border: 1px solid black;
         font-size: 15pt;
         float: left;
-        color: #111314;
+        color: #c8d9e2;
         padding-left: 10px;
         -webkit-border-radius: 5px;
         -moz-border-radius: 5px;
@@ -170,12 +170,13 @@
     
     .container-2 input#schedule-todos {
         height: 50px;
-        background: #fdfeff;
+        background: #253a50;
         border: 1px solid black;
         font-size: 15pt;
         float: left;
-        color: #111314;
+        color: #cae0eb;
         padding-left: 10px;
+        margin-left: 10%;
         -webkit-border-radius: 5px;
         -moz-border-radius: 5px;
         border-radius: 5px;
@@ -280,10 +281,18 @@
         color: #4f5b66;
     }
     
+    input[type=date]:invalid::-webkit-datetime-edit {
+        color: transparent;
+    }
+    
+    input[type=date]:focus::-webkit-datetime-edit {
+        color: black !important;
+    }
+    
     .container-2 .icon {
         position: absolute;
         top: 6%;
-        margin-left: 45%;
+        margin-left: 55%;
         margin-top: 10px;
         z-index: 1;
         color: #4f5b66;
@@ -377,6 +386,11 @@
         margin-top: 3%;
     }
     
+    .completed-date-string {
+        font-size: 15px;
+        margin-top: 1%;
+    }
+    
     .list-item {
         display: grid;
         grid-template-columns: 1fr 50fr 40fr;
@@ -384,11 +398,25 @@
         margin-left: -3%;
     }
     
+    .completed-list-item {
+        display: grid;
+        grid-template-columns: 20fr 50fr;
+        font-size: 25px;
+        text-decoration: line-through;
+        color: green;
+    }
+    
     #task-list p {
         font-size: 25px;
     }
     
     .addtask-label-today {
+        display: grid;
+        grid-template-columns: 1fr 40fr;
+        margin-left: 1%;
+    }
+    
+    .addtask-label-todos {
         display: grid;
         grid-template-columns: 1fr 40fr;
         margin-left: 1%;

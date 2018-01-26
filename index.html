@@ -6,7 +6,6 @@
     <meta name="description" content="Todo App">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Ajay Kumar Singh and Harshitha">
-    <meta http-equiv="refresh" content="30">
     <link rel="stylesheet" href="app.css">
     <script src="jquery-3.2.1.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -170,20 +169,20 @@
                     <h2>Todos</h2>
                     <ul id="todos-main-page"></ul>
                     <ul id="incompleted-task-list"></ul>
-                    <div class="inbox-input" style="display:none">
+                    <div class="todos-input" style="display:none">
                         <div class="input-task">
                             <div class="container-2">
-                                <span class="icon"><i class="fa fa-calendar fa-2x" aria-hidden="true"></i></span>
+                                <span class="icon"><i class="fa fa-calendar fa-2x dateIcon"  aria-hidden="true"></i></span>
                                 <input type="text" id="inputTaskTodos" placeholder="Add Task" />
-                                <input type="date" id="schedule-todos" data-date-inline-picker="true" />
+                                <input type="date" id="schedule-todos" />
                             </div>
                         </div>
                         <div class="buttons">
-                            <button type="button" onclick="addTaskTodos()" class="btn btn-primary add-task-button">Add Task</button>
+                            <button type="button" onclick="onAddTodo()" class="btn btn-primary add-task-button">Add Task</button>
                             <button type="button" class="btn btn-danger cancel-button">Cancel</button>
                         </div>
                     </div>
-                    <div class="addtask-label-inbox">
+                    <div class="addtask-label-todos" onclick="onAddTaskTodos()">
                         <i class="fa fa-plus" style="color:green;" aria-hidden="true"></i>
                         <div class="addtask-text-inbox" style="cursor:default">
                             <h4 style="margin:0px;">Add Task</h4>
@@ -192,8 +191,6 @@
                 </div>
                 <div class="inbox" style="cursor:default; display:none;">
                     <h2>Inbox</h2>
-                    <ul id="incomplete-task-list">
-                    </ul>
                     <div class="inbox-input" style="display:none">
                         <div class="input-task">
                             <div class="container-2">
@@ -207,7 +204,7 @@
                             <button type="button" class="btn btn-danger cancel-button">Cancel</button>
                         </div>
                     </div>
-                    <div class="addtask-label-inbox">
+                    <div class="addtask-label-inbox" onclick="onAddTask()">
                         <i class="fa fa-plus" style="color:green;" aria-hidden="true"></i>
                         <div class="addtask-text-inbox" style="cursor:default">
                             <h4 style="margin:0px;">Add Task</h4>
@@ -274,4 +271,4 @@
     <script src="app.js"></script>
 </body>
 
-</html
+</html>
