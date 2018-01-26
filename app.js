@@ -65,7 +65,7 @@ const createNewTaskElement = function(key, isTodoCompleted, taskString, dateToBe
     listItem.setAttribute("id", key);
     const spanEdit = document.createElement('span');
     spanEdit.className = "editIcon";
-    spanEdit.innerHTML = '<i class="fa fa-pencil-square-o" style="color: black;" onclick="editTodo(event)" aria-hidden="true"></i>';
+    spanEdit.innerHTML = '<i class="fa fa-pencil-square-o" onclick="editTodo(event)" aria-hidden="true"></i>';
     const spanDelete = document.createElement('span');
     spanDelete.className = "deleteIcon";
     spanDelete.innerHTML = '<i class="fa fa-trash-o" onclick="onDeleteTodo(event)" aria-hidden="true"></i>';
@@ -96,7 +96,18 @@ const createNewTaskElement = function(key, isTodoCompleted, taskString, dateToBe
 function onAddTodo() {
     const inboxInput = document.getElementById('inputTaskTodos');
     const inboxInputDate = document.getElementById('schedule-todos');
+    const errorMsg = document.getElementById('error-msg');
+    errorMsg.style.color = "red";
+    if (inboxInput.value === "") {
+        errorMsg.innerHTML = `<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Todo cannot be empty.`;
+        return;
+    }
+    if (inboxInputDate.value === "") {
+        errorMsg.innerHTML = `<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Schedule a date for the Todo.It brings more effectivenss.`;
+        return;
+    }
     saveTodos(inboxInput.value, inboxInputDate.value);
+    errorMsg.innerHTML = "";
     inboxInput.value = "";
     inboxInputDate.value = "";
 }
@@ -221,9 +232,12 @@ function onAddTask() {
 function onCancelTodos() {
     const inboxInput = document.getElementsByClassName('todos-input');
     inboxInput[0].style.display = 'none';
+    const errorMsg = document.getElementById('error-msg');
+    errorMsg.innerHTML = "";
     const inputFields = inboxInput[0].getElementsByTagName('input');
     inputFields[0].value = "";
     inputFields[1].value = "";
+
 }
 
 $('.dateIcon').click(function(event) {
