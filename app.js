@@ -242,7 +242,14 @@ function onCancelTodos() {
     const inputFields = inboxInput[0].getElementsByTagName('input');
     inputFields[0].value = "";
     inputFields[1].value = "";
+}
 
+function onCancelUpdate() {
+    const inboxInput = document.getElementsByClassName('todos-update');
+    const inputFields = inboxInput[0].getElementsByTagName('input');
+    inputFields[0].value = "";
+    inputFields[1].value = "";
+    inboxInput[0].style.display = 'none';
 }
 
 $('.dateIcon').click(function(event) {
