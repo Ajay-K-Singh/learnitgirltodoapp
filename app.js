@@ -131,16 +131,17 @@ function isTodoCompletedFunc(listItem, value) {
 }
 
 function editTodo(event) {
+    const todosInput = document.getElementsByClassName('todos-input');
+    todosInput[0].style.display = "none";
     const spanListItem = event.target.parentNode;
     const editElement = spanListItem.parentNode;
-    const inboxInput = document.getElementsByClassName('todos-input');
+    const inboxInput = document.getElementsByClassName('todos-update');
     inboxInput[0].style.display = 'block';
+    inboxInput.id = editElement.id;
     const inputFields = inboxInput[0].getElementsByTagName('input');
     const editTask = editElement.getElementsByTagName('label');
     inputFields[0].value = editTask[0].innerHTML;
     inputFields[1].value = editTask[1].innerHTML;
-    $(editElement).remove();
-    todosRef.child(editElement.id).remove();
 }
 
 function onDeleteTodo(event) {
@@ -150,20 +151,25 @@ function onDeleteTodo(event) {
     todosRef.child(deleteElement.id).remove();
 }
 
-// function updateEditedTodos(key) {
-//     const isCompleted = false;
-//     const inboxInput = document.getElementsByClassName('todos-input');
-//     const inputFields = inboxInput[0].getElementsByTagName('input');
-//     const task = inputFields[0].value;
-//     const dateTobeCompleted = inputFields[1].value;
-//     const editedTodo = task;
-//     const updatedTodo = {
-//         isCompleted,
-//         task,
-//         dateTobeCompleted
-//     };
-//     todosRef.child(key).update(updatedTodo);
-// }
+function onUpdateTodo() {
+
+    const isCompleted = false;
+    const inboxInput = document.getElementsByClassName('todos-update');
+    const key = inboxInput.id;
+    const inputFields = inboxInput[0].getElementsByTagName('input');
+    const task = inputFields[0].value;
+    const dateTobeCompleted = inputFields[1].value;
+    const editedTodo = task;
+    const updatedTodo = {
+        isCompleted,
+        task,
+        dateTobeCompleted
+    };
+    todosRef.child(key).update(updatedTodo);
+    inputFields[0].value = "";
+    inputFields[1].value = "";
+    inboxInput[0].style.display = 'none';
+}
 
 function completedToDos(listItem, key) {
     saveCompletedTodos(listItem, key)
