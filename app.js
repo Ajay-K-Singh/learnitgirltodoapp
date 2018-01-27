@@ -126,9 +126,14 @@ function isTodoCompletedFunc(listItem, value) {
     if (listItem.childNodes[2].checked) {
         const listItemKey = listItem.id;
         const putInCompletedList = completedToDos(listItem, listItem.id);
-        todosRef.child(listItemKey).remove();
+        $(listItem).addClass('remove-animatedly')
+            .one('webkitAnimationEnd oanimationend msAnimationEnd animationend ', function(e) {
+                todosRef.child(listItemKey).remove();
+            });
+
     }
 }
+
 
 function editTodo(event) {
     const todosInput = document.getElementsByClassName('todos-input');
@@ -147,8 +152,11 @@ function editTodo(event) {
 function onDeleteTodo(event) {
     const spanListItem = event.target.parentNode;
     const deleteElement = spanListItem.parentNode;
-    $(deleteElement).remove();
-    todosRef.child(deleteElement.id).remove();
+    $(deleteElement).addClass('remove-animatedly')
+        .one('webkitAnimationEnd oanimationend msAnimationEnd animationend ', function(e) {
+            todosRef.child(deleteElement.id).remove();
+        });
+
 }
 
 function onUpdateTodo() {
@@ -275,11 +283,13 @@ $('.dateIcon').click(function(event) {
     $('#schedule-todos').click();
 });
 
+
 $(document).ready(function() {
     $("add-task-button").click(function() {
         $(".add-task-button").css("outline", "none");
     });
 });
+
 $(document).ready(function() {
     $(".cancel-button").click(function() {
         $(".today-input").hide();

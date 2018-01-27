@@ -49,24 +49,22 @@
         </div>
 
     </div>
-    <div class="grid">
-        <div class="content">
-            <div class="menu-items">
-                <div class="menu-list">
-                    <div class="calendar" onclick="onTodayClicked()" style="cursor:default">
-                        <div class="calendar-item1">
-                            <i class="fa fa-calendar fa-2x" style="color:rgb(41, 42, 99)" aria-hidden="true"></i>
-                            <span>Today</span>
-                        </div>
+    <div class="content">
+        <div class="menu-items">
+            <div class="menu-list">
+                <div class="calendar" onclick="onTodayClicked()" style="cursor:default">
+                    <div class="calendar-item1">
+                        <i class="fa fa-calendar fa-2x" style="color:rgb(41, 42, 99)" aria-hidden="true"></i>
+                        <span>Today</span>
                     </div>
-                    <div class="calendar-item2" onclick="onSevenDaysClicked()" style="cursor:default">
-                        <i class="fa fa-calendar fa-2x" style="color:rgb(95, 14, 64)" aria-hidden="true"></i>
-                        <span>Next 7 days</span>
-                    </div>
-                    <div class="completed-todos-button" onclick="onCompletedTodos()" style="cursor:default">
-                        <i class="fa fa-tasks fa-2x" style="color:green; cursor:default" aria-hidden="true"></i>
-                        <span>Completed Tasks</span>
-                    </div>
+                </div>
+                <div class="calendar-item2" onclick="onSevenDaysClicked()" style="cursor:default">
+                    <i class="fa fa-calendar fa-2x" style="color:rgb(95, 14, 64)" aria-hidden="true"></i>
+                    <span>Next 7 days</span>
+                </div>
+                <div class="completed-todos-button" onclick="onCompletedTodos()" style="cursor:default">
+                    <i class="fa fa-tasks fa-2x" style="color:green; cursor:default" aria-hidden="true"></i>
+                    <span>Completed Tasks</span>
                 </div>
                 <div class="project-filters" style="cursor:default ">
                     <ul class="project-filter">
@@ -155,107 +153,108 @@
                         </div>
                     </div>
                 </div>
+            </div>
 
-            </div>
-            <div>
-                <hr class="vertical-line" width="1" size="200">
-            </div>
-            <div class="navigation-divisions">
-                <div class="todo-main">
-                    <h2>Todos</h2>
-                    <ul id="incompleted-task-list"></ul>
-                    <div class="todos-input" style="display:none">
-                        <div class="input-task">
-                            <div class="container-2">
-                                <span class="icon"><i class="fa fa-calendar fa-2x"  aria-hidden="true"></i></span>
-                                <input type="text" id="inputTaskTodos" placeholder="Add Task" />
-                                <input type="date" id="schedule-todos" />
-                            </div>
-                            <p id="error-msg"></p>
+
+        </div>
+        <div class="vertical-line">
+            <hr width="1" size="200">
+        </div>
+        <div class="navigation-divisions">
+            <div class="todo-main">
+                <h2>Todos</h2>
+                <ul id="incompleted-task-list"></ul>
+                <div class="todos-input" style="display:none">
+                    <div class="input-task">
+                        <div class="container-2">
+                            <span class="icon"><i class="fa fa-calendar fa-2x"  aria-hidden="true"></i></span>
+                            <input type="text" id="inputTaskTodos" placeholder="Add Task" />
+                            <input type="date" id="schedule-todos" />
                         </div>
-                        <div class="buttons">
-                            <button type="button" onclick="onAddTodo()" class="btn btn-primary add-task-button">Add Task</button>
-                            <button type="button" onclick="onCancelTodos()" class="btn btn-danger cancel-adding-button">Cancel</button>
-                        </div>
+                        <p id="error-msg"></p>
                     </div>
-                    <div class="todos-update" style="display:none">
-                        <div class="input-task">
-                            <div class="container-2">
-                                <span class="icon"><i class="fa fa-calendar fa-2x"  aria-hidden="true"></i></span>
-                                <input type="text" id="inputTaskTodos" placeholder="Add Task" />
-                                <input type="date" id="schedule-todos" />
-                            </div>
-                            <p id="error-msg"></p>
-                        </div>
-                        <div class="buttons">
-                            <button type="button" onclick="onUpdateTodo()" class="btn btn-primary add-task-button">Update Task</button>
-                            <button type="button" onclick="onCancelUpdate()" class="btn btn-danger cancel-adding-button">Cancel</button>
-                        </div>
-                    </div>
-                    <div>
-                        <a href="#" class="addtask-label-todos" onclick="onAddTaskTodos()">
-                            <span class="plusIcon"><i class="fa fa-plus" style="color:green;" aria-hidden="true"></i></span>
-                            <div class="addtask-text-inbox" style="cursor:default">
-                                <h4 style="margin:0px;">Add Task</h4>
-                            </div>
-                        </a>
+                    <div class="buttons">
+                        <button type="button" onclick="onAddTodo()" class="btn btn-primary add-task-button">Add Task</button>
+                        <button type="button" onclick="onCancelTodos()" class="btn btn-danger cancel-adding-button">Cancel</button>
                     </div>
                 </div>
-                <div class="today" style="display: none;">
-                    <div class="today-header">
-                        <h2>Today</h2>
-                        <p id="todays-date"></p>
-                    </div>
-                    <ul id="today-task-list"></ul>
-                    <div class="today-input" style="display:none">
-                        <div class="input-task">
-                            <div class="container-2">
-                                <span class="icon"><i class="fa fa-calendar fa-2x" aria-hidden="true"></i></span>
-                                <input type="search" id="inputTaskToday" placeholder="Add Task" />
-                                <input type="date" id="schedule-today" data-date-inline-picker="true" />
-                            </div>
+                <div class="todos-update" style="display:none">
+                    <div class="input-task">
+                        <div class="container-2">
+                            <span class="icon"><i class="fa fa-calendar fa-2x"  aria-hidden="true"></i></span>
+                            <input type="text" id="inputTaskTodos" placeholder="Add Task" />
+                            <input type="date" id="schedule-todos" />
                         </div>
-                        <div class="buttons">
-                            <button type="button" class="btn btn-primary add-task-button" onclick="addTaskToday()">Add Task</button>
-                            <button type="button" class="btn btn-danger cancel-adding-button">Cancel</button>
-                        </div>
+                        <p id="error-msg"></p>
                     </div>
-                    <div>
-                        <a href="#" class="addtask-label-today" onclick="onAddTaskTodosToday()" style="cursor:default">
-                            <span class="plusIcon"><i class="fa fa-plus" style="color:green;" aria-hidden="true"></i></span>
-                            <div class="addtask-text-inbox">
-                                <h4 style="margin:0;">Add Task</h4>
-                            </div>
-                        </a>
+                    <div class="buttons">
+                        <button type="button" onclick="onUpdateTodo()" class="btn btn-primary add-task-button">Update Task</button>
+                        <button type="button" onclick="onCancelUpdate()" class="btn btn-danger cancel-adding-button">Cancel</button>
                     </div>
                 </div>
-                <div class="plus-seven-days" style="display: none;">
-                    <h2>Next 7 days</h2>
-                    <ul id="sevendays-task-list"></ul>
-                    <div class="sevendays-input" style="display:none">
-                        <div class="input-task">
-                            <div class="container-2">
-                                <span class="icon"><i class="fa fa-calendar fa-2x" aria-hidden="true"></i></span>
-                                <input type="text" id="sevendaysInput" placeholder="Add Task" />
-                                <input type="date" id="schedule-sevendays" className="schedule" data-date-inline-picker="true" />
-                            </div>
+                <div>
+                    <a href="#" class="addtask-label-todos" onclick="onAddTaskTodos()">
+                        <span class="plusIcon"><i class="fa fa-plus" style="color:green;" aria-hidden="true"></i></span>
+                        <div class="addtask-text-inbox" style="cursor:default">
+                            <h4 style="margin:0px;">Add Task</h4>
                         </div>
-                        <div class="buttons">
-                            <button type="button" class="btn btn-primary add-task-button" onclick="addTaskSevenDays()">Add Task</button>
-                            <button type="button" class="btn btn-danger cancel-button">Cancel</button>
+                    </a>
+                </div>
+            </div>
+            <div class="today" style="display: none;">
+                <div class="today-header">
+                    <h2>Today</h2>
+                    <p id="todays-date"></p>
+                </div>
+                <ul id="today-task-list"></ul>
+                <div class="today-input" style="display:none">
+                    <div class="input-task">
+                        <div class="container-2">
+                            <span class="icon"><i class="fa fa-calendar fa-2x" aria-hidden="true"></i></span>
+                            <input type="search" id="inputTaskToday" placeholder="Add Task" />
+                            <input type="date" id="schedule-today" data-date-inline-picker="true" />
                         </div>
                     </div>
-                    <div class="addtask-label-sevendays" style="cursor:default">
-                        <i class="fa fa-plus" style="color:green;" aria-hidden="true"></i>
+                    <div class="buttons">
+                        <button type="button" class="btn btn-primary add-task-button" onclick="addTaskToday()">Add Task</button>
+                        <button type="button" class="btn btn-danger cancel-addin-button">Cancel</button>
+                    </div>
+                </div>
+                <div>
+                    <a href="#" class="addtask-label-today" onclick="onAddTaskTodosToday()" style="cursor:default">
+                        <span class="plusIcon"><i class="fa fa-plus" style="color:green;" aria-hidden="true"></i></span>
                         <div class="addtask-text-inbox">
                             <h4 style="margin:0;">Add Task</h4>
                         </div>
+                    </a>
+                </div>
+            </div>
+            <div class="plus-seven-days" style="display: none;">
+                <h2>Next 7 days</h2>
+                <ul id="sevendays-task-list"></ul>
+                <div class="sevendays-input" style="display:none">
+                    <div class="input-task">
+                        <div class="container-2">
+                            <span class="icon"><i class="fa fa-calendar fa-2x" aria-hidden="true"></i></span>
+                            <input type="text" id="sevendaysInput" placeholder="Add Task" />
+                            <input type="date" id="schedule-sevendays" className="schedule" data-date-inline-picker="true" />
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <button type="button" class="btn btn-primary add-task-button" onclick="addTaskSevenDays()">Add Task</button>
+                        <button type="button" class="btn btn-danger cancel-button">Cancel</button>
                     </div>
                 </div>
-                <div class="completed-todos" style="display: none;">
-                    <h2>Completed Todos</h2>
-                    <ul id="completed-task-list"></ul>
+                <div class="addtask-label-sevendays" style="cursor:default">
+                    <i class="fa fa-plus" style="color:green;" aria-hidden="true"></i>
+                    <div class="addtask-text-inbox">
+                        <h4 style="margin:0;">Add Task</h4>
+                    </div>
                 </div>
+            </div>
+            <div class="completed-todos" style="display: none;">
+                <h2>Completed Todos</h2>
+                <ul id="completed-task-list"></ul>
             </div>
         </div>
     </div>
