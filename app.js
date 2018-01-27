@@ -127,7 +127,7 @@ function isTodoCompletedFunc(listItem, value) {
         const listItemKey = listItem.id;
         const putInCompletedList = completedToDos(listItem, listItem.id);
         $(listItem).addClass('remove-animatedly')
-            .one('webkitAnimationEnd oanimationend msAnimationEnd animationend ', function(e) {
+            .one('webkitAnimationEnd oanimationend msAnimationEnd animationend ', function() {
                 todosRef.child(listItemKey).remove();
             });
 
@@ -153,7 +153,7 @@ function onDeleteTodo(event) {
     const spanListItem = event.target.parentNode;
     const deleteElement = spanListItem.parentNode;
     $(deleteElement).addClass('remove-animatedly')
-        .one('webkitAnimationEnd oanimationend msAnimationEnd animationend ', function(e) {
+        .one('webkitAnimationEnd oanimationend msAnimationEnd animationend ', function() {
             todosRef.child(deleteElement.id).remove();
         });
 
@@ -247,6 +247,7 @@ function dateConversion(dateToConvert) {
 
 function onSevenDaysClicked() {
     const sevenDays = document.getElementsByClassName('plus-seven-days');
+
     navigateToDivision(sevenDays);
 }
 
@@ -276,6 +277,49 @@ function onCancelUpdate() {
     inputFields[0].value = "";
     inputFields[1].value = "";
     inboxInput[0].style.display = 'none';
+}
+
+function displayTaskModal() {
+    var modal = document.getElementById('myModal');
+    $(modal).removeClass('remove-animatedly');
+    modal.style.display = "block";
+    var span = document.getElementsByClassName("close")[0];
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+}
+
+function onAddModalTodo() {
+    var modal = document.getElementById('myModal');
+    const inboxInput = document.getElementById('modalTaskTodos');
+    const inboxInputDate = document.getElementById('modal-schedule');
+    const errorMsg = document.getElementById('error-msg-modal');
+    errorMsg.style.color = "red";
+    if (inboxInput.value === "") {
+        errorMsg.innerHTML = `<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Todo cannot be empty.`;
+        return;
+    }
+    if (inboxInputDate.value === "") {
+        errorMsg.innerHTML = `<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Schedule a date for the Todo.It brings more effectivenss.`;
+        return;
+    }
+    saveTodos(inboxInput.value, inboxInputDate.value);
+    errorMsg.innerHTML = "";
+    inboxInput.value = "";
+    inboxInputDate.value = "";
+    $(modal).addClass('remove-animatedly').one('webkitAnimationEnd oanimationend msAnimationEnd animationend');
+}
+
+function onCancelModalTodo() {
+    var modal = document.getElementById('myModal');
+    $(modal).addClass('remove-animatedly').one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function() {
+        modal.style.display = "none";
+    });
 }
 
 $('.dateIcon').click(function(event) {
