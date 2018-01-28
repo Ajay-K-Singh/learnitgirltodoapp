@@ -15,6 +15,27 @@ const completedTodosRef = firebase.database().ref('completedTodos'); // Complete
 
 todosRef.on('value', gotTodos, error);
 completedTodosRef.on('value', gotTodosCompleted, error);
+const dateToday = new Date();
+const dateTodayString = covertToDateString(dateToday);
+
+
+
+todosRef.orderByChild('dateTobeCompleted').equalTo(dateTodayString).on("value", function(todosToday) {
+    const todos = todosToday.val();
+    const classList = document.getElementById('today-task-list');
+    classList.innerHTML = '';
+    if (todos != null) {
+        let keys = Object.keys(todos);
+        for (let i = 0; i < keys.length; i++) {
+            const key = keys[i];
+            const isTodoCompleted = todos[key].isCompleted;
+            const task = todos[key].task;
+            const dateToBeCompleted = todos[key].dateTobeCompleted;
+            let listItem = createNewTaskElement(keys[i], isTodoCompleted, task, dateToBeCompleted);
+            classList.appendChild(listItem);
+        }
+    }
+});
 
 function gotTodos(incompletedTodos) {
     const todos = incompletedTodos.val();
@@ -119,6 +140,25 @@ function onAddTodo() {
     inboxInputDate.value = "";
 }
 
+function addTaskToday() {
+    const inboxInput = document.getElementById('inputTaskToday');
+    const inboxInputDate = document.getElementById('schedule-today');
+    const errorMsg = document.getElementById('error-message-today');
+    errorMsg.style.color = "red";
+    if (inboxInput.value === "") {
+        errorMsg.innerHTML = `<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Todo cannot be empty.`;
+        return;
+    }
+    if (inboxInputDate.value === "") {
+        errorMsg.innerHTML = `<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Schedule a date for the Todo.It brings more effectivenss.`;
+        return;
+    }
+    saveTodos(inboxInput.value, inboxInputDate.value);
+    errorMsg.innerHTML = "";
+    inboxInput.value = "";
+    inboxInputDate.value = "";
+}
+
 function saveTodos(todo, dateTobeCompleted) {
     const isCompleted = false;
     const task = todo;
@@ -194,12 +234,12 @@ function completedToDos(listItem, key) {
 function saveCompletedTodos(listItem, key) {
     const isCompleted = listItem.childNodes[2].checked;
     const task = listItem.childNodes[3].innerText;
-    const dateToBeCompleted = listItem.childNodes[4].innerText;
+    const dateTobeCompleted = listItem.childNodes[4].innerText;
     const newTodoRef = completedTodosRef.push();
     newTodoRef.set({
         isCompleted,
         task,
-        dateToBeCompleted
+        dateTobeCompleted
     })
 }
 
@@ -210,7 +250,11 @@ function onAddTaskTodos() {
 
 function onAddTaskTodosToday() {
     const inboxInput = document.getElementsByClassName('today-input');
+    const inputs = inboxInput[0].getElementsByTagName('input');
+    const dateToday = new Date();
+    const todaysDate = covertToDateString(dateToday);
     inboxInput[0].style.display = 'block';
+    inputs[1].value = todaysDate;
 }
 
 function onCompletedTodos() {
@@ -253,6 +297,17 @@ function dateConversion(dateToConvert) {
     return `${day} ${date} ${month}`;
 }
 
+function covertToDateString(string) {
+    const month = string.getMonth();
+    let monthWithZero;
+    if (month < 10) {
+        monthWithZero = `0${month+1}`
+    } else monthWithZero = month + 1;
+    const year = string.getFullYear();
+    const date = string.getDate();
+    return `${year}-${monthWithZero}-${date}`;
+}
+
 function onSevenDaysClicked() {
     const sevenDays = document.getElementsByClassName('plus-seven-days');
 
@@ -273,6 +328,16 @@ function onCancelTodos() {
     const inboxInput = document.getElementsByClassName('todos-input');
     inboxInput[0].style.display = 'none';
     const errorMsg = document.getElementById('error-msg');
+    errorMsg.innerHTML = "";
+    const inputFields = inboxInput[0].getElementsByTagName('input');
+    inputFields[0].value = "";
+    inputFields[1].value = "";
+}
+
+function onCancelTodayInput() {
+    const inboxInput = document.getElementsByClassName('today-input');
+    inboxInput[0].style.display = 'none';
+    const errorMsg = document.getElementById('error-message-today');
     errorMsg.innerHTML = "";
     const inputFields = inboxInput[0].getElementsByTagName('input');
     inputFields[0].value = "";

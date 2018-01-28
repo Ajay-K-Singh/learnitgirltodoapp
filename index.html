@@ -215,9 +215,10 @@
                                 <input type="date" id="schedule-today" data-date-inline-picker="true" />
                             </div>
                         </div>
+                        <p id="error-message-today"></p>
                         <div class="buttons">
                             <button type="button" class="btn btn-primary add-task-button" onclick="addTaskToday()">Add Task</button>
-                            <button type="button" class="btn btn-danger cancel-adding-button">Cancel</button>
+                            <button type="button" onclick="onCancelTodayInput()" class="btn btn-danger cancel-adding-button">Cancel</button>
                         </div>
                     </div>
                     <div>
@@ -259,7 +260,7 @@
             </div>
         </div>
         <footer class="footer">
-            <p>&copy LearnItGirl</p>
+            <p>&copyToDoApp</p>
         </footer>
         <div id="myModal" class="modal">
             <div class="modal-content">
@@ -284,6 +285,8 @@
     <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
 
     <script src="app.js"></script>
+    <script src="datepicker/datepicker.js"></script>
+
 </body>
 
 </html>
