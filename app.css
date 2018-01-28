@@ -506,7 +506,6 @@
         display: grid;
         grid-template-columns: 1fr 60fr;
         margin-left: 1%;
-        margin-top: 2%;
     }
     
     .addtask-label-todos {
