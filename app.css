@@ -485,7 +485,7 @@
     
     .list-item {
         display: grid;
-        grid-template-columns: 5fr 5fr 5fr 50fr 40fr;
+        grid-template-columns: 2fr 2fr 30fr 5fr 6fr;
         font-size: 25px;
         margin-left: -3%;
     }

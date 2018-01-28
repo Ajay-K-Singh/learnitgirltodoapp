@@ -93,10 +93,10 @@ const createNewTaskElement = function(key, isTodoCompleted, taskString, dateToBe
     listItem.setAttribute("id", key);
     const spanEdit = document.createElement('span');
     spanEdit.className = "editIcon";
-    spanEdit.innerHTML = '<i class="fa fa-pencil-square-o" onclick="editTodo(event)" aria-hidden="true"></i>';
+    spanEdit.innerHTML = '<i class="fa fa-pencil-square-o" onclick="editTodo(event)" style="color: #176b61;" aria-hidden="true"></i>';
     const spanDelete = document.createElement('span');
     spanDelete.className = "deleteIcon";
-    spanDelete.innerHTML = '<i class="fa fa-trash-o" onclick="onDeleteTodo(event)" aria-hidden="true"></i>';
+    spanDelete.innerHTML = '<a class="btn btn-danger" href="#"><i class="fa fa-icon-trash"></i>Delete</a><a class="btn btn-small" href="#">';
     const input = document.createElement("input");
     input.type = "checkbox";
     input.checked = isTodoCompleted;
@@ -113,11 +113,11 @@ const createNewTaskElement = function(key, isTodoCompleted, taskString, dateToBe
     label.innerText = taskString;
     if (isTodoCompleted === false) {
         listItem.appendChild(spanEdit);
-        listItem.appendChild(spanDelete);
         listItem.appendChild(input);
     }
     listItem.appendChild(label);
     listItem.appendChild(labelDate)
+    listItem.appendChild(spanDelete);
     return listItem;
 }
 
