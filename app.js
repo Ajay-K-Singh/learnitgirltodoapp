@@ -125,7 +125,7 @@ function saveTodos(todo, dateTobeCompleted) {
 function isTodoCompletedFunc(listItem, value) {
     if (listItem.childNodes[2].checked) {
         const listItemKey = listItem.id;
-        const putInCompletedList = completedToDos(listItem, listItem.id);
+        completedToDos(listItem, listItem.id);
         $(listItem).addClass('remove-animatedly')
             .one('webkitAnimationEnd oanimationend msAnimationEnd animationend ', function() {
                 todosRef.child(listItemKey).remove();

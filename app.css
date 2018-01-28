@@ -2,7 +2,6 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         height: 138px;
-        transition: 0.3s;
         z-index: 1;
         background-color: rgb(167, 56, 56);
     }
@@ -576,13 +575,19 @@
     
     .horizontal-line {
         position: relative;
-        width: 220px;
-        margin-right: 70px;
+        width: 50%;
+        height: 1%;
+        margin-top: 0;
+        margin-right: 17%;
     }
     
     .vertical-line {
-        height: 600px;
-        color: black
+        background-color: rgb(128, 31, 31);
+        margin: 10px;
+    }
+    
+    .navigation-divisions {
+        margin-left: 2%;
     }
     
     .projects {
@@ -602,6 +607,11 @@
     
     .project-labels {
         margin-left: 5%;
+    }
+    
+    .footer {
+        height: 50px;
+        margin-top: -50px;
     }
     
     .filters {
