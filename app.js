@@ -13,11 +13,11 @@ firebase.initializeApp(config);
 const todosRef = firebase.database().ref('todos'); //Todos ref for firebase
 const completedTodosRef = firebase.database().ref('completedTodos'); // Completed todos ref for firebase
 
-todosRef.on('value', gotData, error);
+todosRef.on('value', gotTodos, error);
 completedTodosRef.on('value', gotTodosCompleted, error);
 
-function gotData(data) {
-    const todos = data.val();
+function gotTodos(incompletedTodos) {
+    const todos = incompletedTodos.val();
     const classList = document.getElementById('incompleted-task-list');
     classList.innerHTML = '';
     if (todos != null) {
@@ -32,7 +32,7 @@ function gotData(data) {
         }
     }
     const heightOfIncompletedList = $('#incompleted-task-list').height();
-    if (heightOfIncompletedList > 400) {
+    if (heightOfIncompletedList > 350) {
         $('#incompleted-task-list').addClass('isOverflowing');
     }
 }
@@ -53,6 +53,10 @@ function gotTodosCompleted(completedTodos) {
             completeTasks.appendChild(listItem);
         }
 
+    }
+    const heightOfCompletedList = $('#completed-task-list').height();
+    if (heightOfCompletedList > 450) {
+        $('#completed-task-list').addClass('isOverflowing');
     }
 }
 

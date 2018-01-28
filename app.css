@@ -1,6 +1,6 @@
     .main-content {
         display: grid;
-        grid-template-rows: 10fr 46fr 2fr;
+        grid-template-rows: 10fr 45fr 1fr;
     }
     
     .logo {
@@ -614,10 +614,17 @@
         margin-left: 5%;
     }
     
-    .footer {
+    footer {
         height: 50px;
         margin-bottom: -5%;
         background-color: #888;
+        text-align: center;
+    }
+    
+    footer p {
+        margin-top: 1%;
+        font-size: 15px;
+        font-weight: bold;
     }
     
     .filters {
@@ -705,7 +712,7 @@
     }
     
     .isOverflowing {
-        height: 400px;
+        height: 350px;
         overflow: scroll;
     }
     
