@@ -156,7 +156,9 @@ function addTaskToday() {
     saveTodos(inboxInput.value, inboxInputDate.value);
     errorMsg.innerHTML = "";
     inboxInput.value = "";
-    inboxInputDate.value = "";
+    const dateToday = new Date();
+    const todaysDate = covertToDateString(dateToday);
+    inboxInputDate.value = todaysDate;
 }
 
 function saveTodos(todo, dateTobeCompleted) {
