@@ -96,7 +96,7 @@ const createNewTaskElement = function(key, isTodoCompleted, taskString, dateToBe
     spanEdit.innerHTML = '<i class="fa fa-pencil-square-o" onclick="editTodo(event)" style="color: #176b61;" aria-hidden="true"></i>';
     const spanDelete = document.createElement('span');
     spanDelete.className = "deleteIcon";
-    spanDelete.innerHTML = '<a class="btn btn-danger" href="#"><i class="fa fa-icon-trash"></i>Delete</a><a class="btn btn-small" href="#">';
+    spanDelete.innerHTML = '<a class="btn btn-danger" onclick="onDeleteTodo(event)"href="#"><i class="fa fa-icon-trash"></i>Delete</a><a class="btn btn-small" href="#">';
     const input = document.createElement("input");
     input.type = "checkbox";
     input.checked = isTodoCompleted;
