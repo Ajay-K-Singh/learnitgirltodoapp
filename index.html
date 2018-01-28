@@ -26,253 +26,255 @@
 </head>
 
 <body>
-    <div class="logo">
-        <div class="todos">
-            <img src="public/todos3.png" class="logo">
-        </div>
-        <div class="navigation-items" onclick="onTasks()">
-            <div class="task-icon">
-                <i class="fa fa-tasks fa-2x" style="color:rgb(124, 37, 146)" aria-hidden="true"></i>
+    <div class="main-content">
+        <div class="logo">
+            <div class="todos">
+                <img src="public/todos3.png" class="logo">
             </div>
-            <div class="quickadd">
-                <i class="fa fa-plus fa-2x" onclick="displayTaskModal()" style="color:green" aria-hidden="true"></i>
-            </div>
-            <div class="notificationbell">
-                <i class="fa fa-bell fa-2x" style="color:blue" aria-hidden="true"></i>
-            </div>
-        </div>
-        <div class="search-box">
-            <div class="container-1">
-                <span class="icon"><i class="fa fa-search"></i></span>
-                <input type="search" id="search" placeholder="Search Tasks" />
-            </div>
-        </div>
-
-    </div>
-    <div class="content">
-        <div class="menu-items">
-            <div class="menu-list">
-                <div class="calendar" onclick="onTodayClicked()" style="cursor:default">
-                    <div class="calendar-item1">
-                        <i class="fa fa-calendar fa-2x" style="color:rgb(41, 42, 99)" aria-hidden="true"></i>
-                        <span>Today</span>
-                    </div>
+            <div class="navigation-items" onclick="onTasks()">
+                <div class="task-icon">
+                    <i class="fa fa-tasks fa-2x" style="color:rgb(124, 37, 146)" aria-hidden="true"></i>
                 </div>
-                <div class="calendar-item2" onclick="onSevenDaysClicked()" style="cursor:default">
-                    <i class="fa fa-calendar fa-2x" style="color:rgb(95, 14, 64)" aria-hidden="true"></i>
-                    <span>Next 7 days</span>
+                <div class="quickadd">
+                    <i class="fa fa-plus fa-2x" onclick="displayTaskModal()" style="color:green" aria-hidden="true"></i>
                 </div>
-                <div class="completed-todos-button" onclick="onCompletedTodos()" style="cursor:default">
-                    <i class="fa fa-tasks fa-2x" style="color:green; cursor:default" aria-hidden="true"></i>
-                    <span>Completed Tasks</span>
+                <div class="notificationbell">
+                    <i class="fa fa-bell fa-2x" style="color:blue" aria-hidden="true"></i>
                 </div>
-                <div class="project-filters" style="cursor:default ">
-                    <ul class="project-filter">
-                        <li class="project">Projects</li>
-                        <li class="filter">Fiters</li>
-                    </ul>
-                    <hr class="horizontal-line">
-                    <div class="projects">
-                        <div class="projects-list" style="cursor:default">
-                            <div "project-1">
-                                <div class="label1">
-                                    <i class="fa fa-circle" style="color:green;" aria-hidden="true"></i>
-                                    <span class="project-labels">Personal</span>
-                                </div>
-                            </div>
-                            <div "project-2">
-                                <div class="label1">
-                                    <i class="fa fa-circle" style="color:blue;" aria-hidden="true"></i>
-                                    <span class="project-labels">Shopping</span>
-                                </div>
-                            </div>
-                            <div "project-3">
-                                <div class="label3">
-                                    <i class="fa fa-circle" style="color:rgb(139, 64, 64);" aria-hidden="true"></i>
-                                    <span class="project-labels">Work</span>
-                                </div>
-                            </div>
-                            <div "project-3">
-                                <div class="label3">
-                                    <i class="fa fa-circle" style="color:rgb(65, 8, 8);" aria-hidden="true"></i>
-                                    <span class="project-labels">Work</span>
-                                </div>
-                            </div>
-                            <div "project-3">
-                                <div class="label3">
-                                    <i class="fa fa-circle" style="color:rgb(27, 58, 12);" aria-hidden="true"></i>
-                                    <span class="project-labels">Work</span>
-                                </div>
-                            </div>
-                            <div "project-3">
-                                <div class="label3">
-                                    <i class="fa fa-plus " style="color:rgb(138, 29, 123);" aria-hidden="true"></i>
-                                    <span class="project-labels">Add Project</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="filters" style="display:none">
-                        <div class="filter-list" style="cursor:default">
-                            <div "filter-1">
-                                <div class="label1">
-                                    <i class="fa fa-filter" style="color:green;" aria-hidden="true"></i>
-                                    <span class="filter-labels">Assigned to me</span>
-                                </div>
-                            </div>
-                            <div "filter-2">
-                                <div class="label1">
-                                    <i class="fa fa-filter" style="color:rgb(184, 142, 28);" aria-hidden="true"></i>
-                                    <span class="filter-labels">Assigned to others</span>
-                                </div>
-                            </div>
-                            <div "filter-3">
-                                <div class="label3">
-                                    <i class="fa fa-filter" style="color:rgb(212, 108, 22);" aria-hidden="true"></i>
-                                    <span class="filter-labels">Priority 1</span>
-                                </div>
-                            </div>
-                            <div "filter-3">
-                                <div class="label3">
-                                    <i class="fa fa-filter" style="color:rgb(158, 13, 13);" aria-hidden="true"></i>
-                                    <span class="filter-labels">Priority 2</span>
-                                </div>
-                            </div>
-                            <div "filter-3">
-                                <div class="label3">
-                                    <i class="fa fa-filter" style="color:rgb(21, 30, 68);" aria-hidden="true"></i>
-                                    <span class="filter-labels">Work</span>
-                                </div>
-                            </div>
-                            <div "filter-3">
-                                <div class="label3">
-                                    <i class="fa fa-plus " style="color:rgb(138, 29, 123);" aria-hidden="true"></i>
-                                    <span class="filter-labels">Priority 3</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+            <div class="search-box">
+                <div class="container-1">
+                    <span class="icon"><i class="fa fa-search"></i></span>
+                    <input type="search" id="search" placeholder="Search Tasks" />
                 </div>
             </div>
 
+        </div>
+        <div class="content">
+            <div class="menu-items">
+                <div class="menu-list">
+                    <div class="calendar" onclick="onTodayClicked()" style="cursor:default">
+                        <div class="calendar-item1">
+                            <i class="fa fa-calendar fa-2x" style="color:rgb(41, 42, 99)" aria-hidden="true"></i>
+                            <span>Today</span>
+                        </div>
+                    </div>
+                    <div class="calendar-item2" onclick="onSevenDaysClicked()" style="cursor:default">
+                        <i class="fa fa-calendar fa-2x" style="color:rgb(95, 14, 64)" aria-hidden="true"></i>
+                        <span>Next 7 days</span>
+                    </div>
+                    <div class="completed-todos-button" onclick="onCompletedTodos()" style="cursor:default">
+                        <i class="fa fa-tasks fa-2x" style="color:green; cursor:default" aria-hidden="true"></i>
+                        <span>Completed Tasks</span>
+                    </div>
+                    <div class="project-filters" style="cursor:default ">
+                        <ul class="project-filter">
+                            <li class="project">Projects</li>
+                            <li class="filter">Fiters</li>
+                        </ul>
+                        <hr class="horizontal-line">
+                        <div class="projects">
+                            <div class="projects-list" style="cursor:default">
+                                <div "project-1">
+                                    <div class="label1">
+                                        <i class="fa fa-circle" style="color:green;" aria-hidden="true"></i>
+                                        <span class="project-labels">Personal</span>
+                                    </div>
+                                </div>
+                                <div "project-2">
+                                    <div class="label1">
+                                        <i class="fa fa-circle" style="color:blue;" aria-hidden="true"></i>
+                                        <span class="project-labels">Shopping</span>
+                                    </div>
+                                </div>
+                                <div "project-3">
+                                    <div class="label3">
+                                        <i class="fa fa-circle" style="color:rgb(139, 64, 64);" aria-hidden="true"></i>
+                                        <span class="project-labels">Work</span>
+                                    </div>
+                                </div>
+                                <div "project-3">
+                                    <div class="label3">
+                                        <i class="fa fa-circle" style="color:rgb(65, 8, 8);" aria-hidden="true"></i>
+                                        <span class="project-labels">Work</span>
+                                    </div>
+                                </div>
+                                <div "project-3">
+                                    <div class="label3">
+                                        <i class="fa fa-circle" style="color:rgb(27, 58, 12);" aria-hidden="true"></i>
+                                        <span class="project-labels">Work</span>
+                                    </div>
+                                </div>
+                                <div "project-3">
+                                    <div class="label3">
+                                        <i class="fa fa-plus " style="color:rgb(138, 29, 123);" aria-hidden="true"></i>
+                                        <span class="project-labels">Add Project</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="filters" style="display:none">
+                            <div class="filter-list" style="cursor:default">
+                                <div "filter-1">
+                                    <div class="label1">
+                                        <i class="fa fa-filter" style="color:green;" aria-hidden="true"></i>
+                                        <span class="filter-labels">Assigned to me</span>
+                                    </div>
+                                </div>
+                                <div "filter-2">
+                                    <div class="label1">
+                                        <i class="fa fa-filter" style="color:rgb(184, 142, 28);" aria-hidden="true"></i>
+                                        <span class="filter-labels">Assigned to others</span>
+                                    </div>
+                                </div>
+                                <div "filter-3">
+                                    <div class="label3">
+                                        <i class="fa fa-filter" style="color:rgb(212, 108, 22);" aria-hidden="true"></i>
+                                        <span class="filter-labels">Priority 1</span>
+                                    </div>
+                                </div>
+                                <div "filter-3">
+                                    <div class="label3">
+                                        <i class="fa fa-filter" style="color:rgb(158, 13, 13);" aria-hidden="true"></i>
+                                        <span class="filter-labels">Priority 2</span>
+                                    </div>
+                                </div>
+                                <div "filter-3">
+                                    <div class="label3">
+                                        <i class="fa fa-filter" style="color:rgb(21, 30, 68);" aria-hidden="true"></i>
+                                        <span class="filter-labels">Work</span>
+                                    </div>
+                                </div>
+                                <div "filter-3">
+                                    <div class="label3">
+                                        <i class="fa fa-plus " style="color:rgb(138, 29, 123);" aria-hidden="true"></i>
+                                        <span class="filter-labels">Priority 3</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        </div>
-        <div class="vertical-line">
-        </div>
-        <div class="navigation-divisions">
-            <div class="todo-main">
-                <h2>Todos</h2>
-                <ul id="incompleted-task-list"></ul>
-                <div class="todos-input" style="display:none">
-                    <div class="input-task">
-                        <div class="container-2">
-                            <span class="icon"><i class="fa fa-calendar fa-2x"  aria-hidden="true"></i></span>
-                            <input type="text" id="inputTaskTodos" placeholder="Add Task" />
-                            <input type="date" id="schedule-todos" />
-                        </div>
-                        <p id="error-msg"></p>
-                    </div>
-                    <div class="buttons">
-                        <button type="button" onclick="onAddTodo()" class="btn btn-primary add-task-button">Add Task</button>
-                        <button type="button" onclick="onCancelTodos()" class="btn btn-danger cancel-adding-button">Cancel</button>
-                    </div>
-                </div>
-                <div class="todos-update" style="display:none">
-                    <div class="input-task">
-                        <div class="container-2">
-                            <span class="icon"><i class="fa fa-calendar fa-2x"  aria-hidden="true"></i></span>
-                            <input type="text" id="inputTaskTodos" placeholder="Add Task" />
-                            <input type="date" id="schedule-todos" />
-                        </div>
-                        <p id="error-msg"></p>
-                    </div>
-                    <div class="buttons">
-                        <button type="button" onclick="onUpdateTodo()" class="btn btn-primary add-task-button">Update Task</button>
-                        <button type="button" onclick="onCancelUpdate()" class="btn btn-danger cancel-adding-button">Cancel</button>
-                    </div>
-                </div>
-                <div>
-                    <a href="#" class="addtask-label-todos" onclick="onAddTaskTodos()">
-                        <span class="plusIcon"><i class="fa fa-plus" style="color:green;" aria-hidden="true"></i></span>
-                        <div class="addtask-text-inbox" style="cursor:default">
-                            <h4 style="margin:0px;">Add Task</h4>
-                        </div>
-                    </a>
-                </div>
+
             </div>
-            <div class="today" style="display: none;">
-                <div class="today-header">
-                    <h2>Today</h2>
-                    <p id="todays-date"></p>
-                </div>
-                <ul id="today-task-list"></ul>
-                <div class="today-input" style="display:none">
-                    <div class="input-task">
-                        <div class="container-2">
-                            <span class="icon"><i class="fa fa-calendar fa-2x" aria-hidden="true"></i></span>
-                            <input type="search" id="inputTaskToday" placeholder="Add Task" />
-                            <input type="date" id="schedule-today" data-date-inline-picker="true" />
+            <div class="vertical-line">
+            </div>
+            <div class="navigation-divisions">
+                <div class="todo-main">
+                    <h2>Todos</h2>
+                    <ul id="incompleted-task-list"></ul>
+                    <div class="todos-input" style="display:none">
+                        <div class="input-task">
+                            <div class="container-2">
+                                <span class="icon"><i class="fa fa-calendar fa-2x"  aria-hidden="true"></i></span>
+                                <input type="text" id="inputTaskTodos" placeholder="Add Task" />
+                                <input type="date" id="schedule-todos" />
+                            </div>
+                            <p id="error-msg"></p>
+                        </div>
+                        <div class="buttons">
+                            <button type="button" onclick="onAddTodo()" class="btn btn-primary add-task-button">Add Task</button>
+                            <button type="button" onclick="onCancelTodos()" class="btn btn-danger cancel-adding-button">Cancel</button>
                         </div>
                     </div>
-                    <div class="buttons">
-                        <button type="button" class="btn btn-primary add-task-button" onclick="addTaskToday()">Add Task</button>
-                        <button type="button" class="btn btn-danger cancel-adding-button">Cancel</button>
+                    <div class="todos-update" style="display:none">
+                        <div class="input-task">
+                            <div class="container-2">
+                                <span class="icon"><i class="fa fa-calendar fa-2x"  aria-hidden="true"></i></span>
+                                <input type="text" id="inputTaskTodos" placeholder="Add Task" />
+                                <input type="date" id="schedule-todos" />
+                            </div>
+                            <p id="error-msg"></p>
+                        </div>
+                        <div class="buttons">
+                            <button type="button" onclick="onUpdateTodo()" class="btn btn-primary add-task-button">Update Task</button>
+                            <button type="button" onclick="onCancelUpdate()" class="btn btn-danger cancel-adding-button">Cancel</button>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="#" class="addtask-label-todos" onclick="onAddTaskTodos()">
+                            <span class="plusIcon"><i class="fa fa-plus" style="color:green;" aria-hidden="true"></i></span>
+                            <div class="addtask-text-inbox" style="cursor:default">
+                                <h4 style="margin:0px;">Add Task</h4>
+                            </div>
+                        </a>
                     </div>
                 </div>
-                <div>
-                    <a href="#" class="addtask-label-today" onclick="onAddTaskTodosToday()" style="cursor:default">
-                        <span class="plusIcon"><i class="fa fa-plus" style="color:green;" aria-hidden="true"></i></span>
+                <div class="today" style="display: none;">
+                    <div class="today-header">
+                        <h2>Today</h2>
+                        <p id="todays-date"></p>
+                    </div>
+                    <ul id="today-task-list"></ul>
+                    <div class="today-input" style="display:none">
+                        <div class="input-task">
+                            <div class="container-2">
+                                <span class="icon"><i class="fa fa-calendar fa-2x" aria-hidden="true"></i></span>
+                                <input type="search" id="inputTaskToday" placeholder="Add Task" />
+                                <input type="date" id="schedule-today" data-date-inline-picker="true" />
+                            </div>
+                        </div>
+                        <div class="buttons">
+                            <button type="button" class="btn btn-primary add-task-button" onclick="addTaskToday()">Add Task</button>
+                            <button type="button" class="btn btn-danger cancel-adding-button">Cancel</button>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="#" class="addtask-label-today" onclick="onAddTaskTodosToday()" style="cursor:default">
+                            <span class="plusIcon"><i class="fa fa-plus" style="color:green;" aria-hidden="true"></i></span>
+                            <div class="addtask-text-inbox">
+                                <h4 style="margin:0;">Add Task</h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="plus-seven-days" style="display: none;">
+                    <h2>Next 7 days</h2>
+                    <ul id="sevendays-task-list"></ul>
+                    <div class="sevendays-input" style="display:none">
+                        <div class="input-task">
+                            <div class="container-2">
+                                <span class="icon"><i class="fa fa-calendar fa-2x" aria-hidden="true"></i></span>
+                                <input type="text" id="sevendaysInput" placeholder="Add Task" />
+                                <input type="date" id="schedule-sevendays" className="schedule" data-date-inline-picker="true" />
+                            </div>
+                        </div>
+                        <div class="buttons">
+                            <button type="button" class="btn btn-primary add-task-button" onclick="addTaskSevenDays()">Add Task</button>
+                            <button type="button" class="btn btn-danger cancel-button">Cancel</button>
+                        </div>
+                    </div>
+                    <div class="addtask-label-sevendays" style="cursor:default">
+                        <i class="fa fa-plus" style="color:green;" aria-hidden="true"></i>
                         <div class="addtask-text-inbox">
                             <h4 style="margin:0;">Add Task</h4>
                         </div>
-                    </a>
-                </div>
-            </div>
-            <div class="plus-seven-days" style="display: none;">
-                <h2>Next 7 days</h2>
-                <ul id="sevendays-task-list"></ul>
-                <div class="sevendays-input" style="display:none">
-                    <div class="input-task">
-                        <div class="container-2">
-                            <span class="icon"><i class="fa fa-calendar fa-2x" aria-hidden="true"></i></span>
-                            <input type="text" id="sevendaysInput" placeholder="Add Task" />
-                            <input type="date" id="schedule-sevendays" className="schedule" data-date-inline-picker="true" />
-                        </div>
-                    </div>
-                    <div class="buttons">
-                        <button type="button" class="btn btn-primary add-task-button" onclick="addTaskSevenDays()">Add Task</button>
-                        <button type="button" class="btn btn-danger cancel-button">Cancel</button>
                     </div>
                 </div>
-                <div class="addtask-label-sevendays" style="cursor:default">
-                    <i class="fa fa-plus" style="color:green;" aria-hidden="true"></i>
-                    <div class="addtask-text-inbox">
-                        <h4 style="margin:0;">Add Task</h4>
-                    </div>
+                <div class="completed-todos" style="display: none;">
+                    <h2>Completed Todos</h2>
+                    <ul id="completed-task-list"></ul>
                 </div>
-            </div>
-            <div class="completed-todos" style="display: none;">
-                <h2>Completed Todos</h2>
-                <ul id="completed-task-list"></ul>
             </div>
         </div>
-    </div>
-    <footer class="footer"></footer>
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <p class="modal-header">Quick Add Task<span class="close">&times;</span></p>
-            <div class="modal-input">
-                <div class="input-task">
-                    <div class="container-2">
-                        <span class="icon"><i class="fa fa-calendar fa-2x"  aria-hidden="true"></i></span>
-                        <input type="text" id="modalTaskTodos" placeholder="Add Task" />
-                        <input type="date" id="modal-schedule" />
+        <footer class="footer"></footer>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <p class="modal-header">Quick Add Task<span class="close">&times;</span></p>
+                <div class="modal-input">
+                    <div class="input-task">
+                        <div class="container-2">
+                            <span class="icon"><i class="fa fa-calendar fa-2x"  aria-hidden="true"></i></span>
+                            <input type="text" id="modalTaskTodos" placeholder="Add Task" />
+                            <input type="date" id="modal-schedule" />
+                        </div>
+                        <p id="error-msg-modal"></p>
                     </div>
-                    <p id="error-msg-modal"></p>
-                </div>
-                <div class="buttons">
-                    <button type="button" onclick="onAddModalTodo()" class="btn btn-primary modal-add-task">Add Task</button>
-                    <button type="button" onclick="onCancelModalTodo()" class="btn btn-danger cancel-adding-button">Cancel</button>
+                    <div class="buttons">
+                        <button type="button" onclick="onAddModalTodo()" class="btn btn-primary modal-add-task">Add Task</button>
+                        <button type="button" onclick="onCancelModalTodo()" class="btn btn-danger cancel-adding-button">Cancel</button>
+                    </div>
                 </div>
             </div>
         </div>

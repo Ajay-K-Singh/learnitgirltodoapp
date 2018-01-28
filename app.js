@@ -31,6 +31,10 @@ function gotData(data) {
             classList.appendChild(listItem);
         }
     }
+    const heightOfIncompletedList = $('#incompleted-task-list').height();
+    if (heightOfIncompletedList > 400) {
+        $('#incompleted-task-list').addClass('isOverflowing');
+    }
 }
 
 function gotTodosCompleted(completedTodos) {

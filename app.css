@@ -1,3 +1,8 @@
+    .main-content {
+        display: grid;
+        grid-template-rows: 10fr 46fr 2fr;
+    }
+    
     .logo {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -611,7 +616,8 @@
     
     .footer {
         height: 50px;
-        margin-top: -50px;
+        margin-bottom: -5%;
+        background-color: #888;
     }
     
     .filters {
@@ -696,6 +702,11 @@
             transform: scale(0);
             opacity: 0
         }
+    }
+    
+    .isOverflowing {
+        height: 400px;
+        overflow: scroll;
     }
     
     .modal {
