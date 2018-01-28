@@ -55,6 +55,7 @@ function gotTodos(incompletedTodos) {
     const heightOfIncompletedList = $('#incompleted-task-list').height();
     if (heightOfIncompletedList > 350) {
         $('#incompleted-task-list').addClass('isOverflowing');
+        updateScroll(classList);
     }
 }
 
@@ -68,7 +69,7 @@ function gotTodosCompleted(completedTodos) {
             const key = keys[i];
             const isTodoCompleted = completedTodosList[key].isCompleted;
             const task = completedTodosList[key].task;
-            const dateToBeCompleted = completedTodosList[key].dateToBeCompleted;
+            const dateToBeCompleted = completedTodosList[key].dateTobeCompleted;
             let listItem = createNewTaskElement(keys[i], isTodoCompleted, task, dateToBeCompleted);
             const completeTasks = document.getElementById('completed-task-list');
             completeTasks.appendChild(listItem);
@@ -114,10 +115,13 @@ const createNewTaskElement = function(key, isTodoCompleted, taskString, dateToBe
     if (isTodoCompleted === false) {
         listItem.appendChild(spanEdit);
         listItem.appendChild(input);
+
     }
     listItem.appendChild(label);
-    listItem.appendChild(labelDate)
-    listItem.appendChild(spanDelete);
+    listItem.appendChild(labelDate);
+    if (isTodoCompleted === false) {
+        listItem.appendChild(spanDelete);
+    }
     return listItem;
 }
 
@@ -172,8 +176,14 @@ function saveTodos(todo, dateTobeCompleted) {
     })
 }
 
+function updateScroll(classList) {
+    var element = document.getElementById(classList.id);
+    element.scrollBy = element.scrollHeight;
+}
+
+
 function isTodoCompletedFunc(listItem, value) {
-    if (listItem.childNodes[2].checked) {
+    if (listItem.childNodes[1].checked) {
         const listItemKey = listItem.id;
         completedToDos(listItem, listItem.id);
         $(listItem).addClass('remove-animatedly')
@@ -240,9 +250,9 @@ function completedToDos(listItem, key) {
 }
 
 function saveCompletedTodos(listItem, key) {
-    const isCompleted = listItem.childNodes[2].checked;
-    const task = listItem.childNodes[3].innerText;
-    const dateTobeCompleted = listItem.childNodes[4].innerText;
+    const isCompleted = listItem.childNodes[1].checked;
+    const task = listItem.childNodes[2].innerText;
+    const dateTobeCompleted = listItem.childNodes[3].innerText;
     const newTodoRef = completedTodosRef.push();
     newTodoRef.set({
         isCompleted,
