@@ -155,8 +155,6 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
             <div class="vertical-line">
             </div>
@@ -277,6 +275,25 @@
                     <div class="buttons">
                         <button type="button" onclick="onAddModalTodo()" class="btn btn-primary modal-add-task">Add Task</button>
                         <button type="button" onclick="onCancelModalTodo()" class="btn btn-danger cancel-adding-button">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="editTodoModal" class="modal">
+            <div class="modal-content">
+                <p class="modal-header">Edit Todo<span class="close" onclick="onCancelEditModalTodo()">&times;</span></p>
+                <div class="edit-modal-input">
+                    <div class="input-task">
+                        <div class="container-2">
+                            <span class="icon"><i class="fa fa-calendar fa-2x"  aria-hidden="true"></i></span>
+                            <input type="text" id="modalTaskTodos" placeholder="Add Task" />
+                            <input type="date" id="modal-schedule" />
+                        </div>
+                        <p id="error-msg-modal"></p>
+                    </div>
+                    <div class="buttons">
+                        <button type="button" onclick="onUpdateEditedTodo()" class="btn btn-primary modal-add-task">Update Task</button>
+                        <button type="button" onclick="onCancelEditModalTodo()" class="btn btn-danger cancel-adding-button">Cancel</button>
                     </div>
                 </div>
             </div>

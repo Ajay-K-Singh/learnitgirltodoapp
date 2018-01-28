@@ -184,17 +184,41 @@ function isTodoCompletedFunc(listItem, value) {
 
 
 function editTodo(event) {
-    const todosInput = document.getElementsByClassName('todos-input');
-    todosInput[0].style.display = "none";
+    var modal = document.getElementById('editTodoModal');
+    $(modal).removeClass('remove-animatedly');
+    modal.style.display = "block";
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
     const spanListItem = event.target.parentNode;
     const editElement = spanListItem.parentNode;
-    const inboxInput = document.getElementsByClassName('todos-update');
-    inboxInput[0].style.display = 'block';
-    inboxInput.id = editElement.id;
-    const inputFields = inboxInput[0].getElementsByTagName('input');
+    const inputs = modal.getElementsByTagName('input');
+    inputs.id = editElement.id;
     const editTask = editElement.getElementsByTagName('label');
-    inputFields[0].value = editTask[0].innerHTML;
-    inputFields[1].value = editTask[1].innerHTML;
+    inputs[0].value = editTask[0].innerHTML;
+    inputs[1].value = editTask[1].innerHTML;
+}
+
+function onUpdateEditedTodo() {
+    const isCompleted = false;
+    const editTodoInputs = document.getElementById('editTodoModal');
+    const inputs = editTodoInputs.getElementsByTagName('input');
+    const key = inputs.id;
+    const task = inputs[0].value;
+    const dateTobeCompleted = inputs[1].value;
+    const editedTodo = task;
+    const updatedTodo = {
+        isCompleted,
+        task,
+        dateTobeCompleted
+    };
+    todosRef.child(key).update(updatedTodo);
+    inputs[0].value = "";
+    inputs[1].value = "";
+    $(editTodoInputs).addClass('remove-animatedly')
+        .one('webkitAnimationEnd oanimationend msAnimationEnd animationend');
 }
 
 function onDeleteTodo(event) {
@@ -207,25 +231,7 @@ function onDeleteTodo(event) {
 
 }
 
-function onUpdateTodo() {
 
-    const isCompleted = false;
-    const inboxInput = document.getElementsByClassName('todos-update');
-    const key = inboxInput.id;
-    const inputFields = inboxInput[0].getElementsByTagName('input');
-    const task = inputFields[0].value;
-    const dateTobeCompleted = inputFields[1].value;
-    const editedTodo = task;
-    const updatedTodo = {
-        isCompleted,
-        task,
-        dateTobeCompleted
-    };
-    todosRef.child(key).update(updatedTodo);
-    inputFields[0].value = "";
-    inputFields[1].value = "";
-    inboxInput[0].style.display = 'none';
-}
 
 function completedToDos(listItem, key) {
     saveCompletedTodos(listItem, key)
@@ -363,6 +369,7 @@ function displayTaskModal() {
     }
 }
 
+
 function onAddModalTodo() {
     var modal = document.getElementById('myModal');
     const inboxInput = document.getElementById('modalTaskTodos');
@@ -386,6 +393,13 @@ function onAddModalTodo() {
 
 function onCancelModalTodo() {
     var modal = document.getElementById('myModal');
+    $(modal).addClass('remove-animatedly').one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function() {
+        modal.style.display = "none";
+    });
+}
+
+function onCancelEditModalTodo() {
+    var modal = document.getElementById('editTodoModal');
     $(modal).addClass('remove-animatedly').one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function() {
         modal.style.display = "none";
     });
